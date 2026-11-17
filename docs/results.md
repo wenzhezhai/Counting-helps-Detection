@@ -53,8 +53,8 @@ A complete native GeCo2 run used all 1,190 FSCD147 test images, released FSCD we
 ## Pending and deferred work
 
 - Full TinyFormer-XL-PBM COCO inference follows checkpoint transfer and strict-load verification.
-- Group DETR v2 has a strict CPU canary. GPU inference and full COCO AP are pending.
-- DINOv3 complete-file checks, server integration and memory profiling precede full COCO inference.
+- Group DETR v2 has strict CPU and native GPU checks, including the largest transformed image. Full COCO inference is active and AP awaits completion.
+- DINOv3 head is verified on the server. The complete local backbone is transferring. Architecture and memory profiling precede full COCO inference.
 - RF-DETR-2XL execution remains deferred at the user's request pending the applicable license.
 - BMD-45 detector training stopped safely after 35 completed epochs at a user priority change. The resumable state remains archived. Counter adaptation and fresh-holdout evaluation remain pending.
 - ECDet-L has strict COCO and native Objects365 CPU checks. Its partial full-list export stopped at the priority change. Full AP remains pending.

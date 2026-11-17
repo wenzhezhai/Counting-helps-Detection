@@ -160,6 +160,31 @@ def verify_native_assets(source, checkpoint, config):
         if actual != expected:
             raise ValueError(f"Frozen Count Anything source changed: {relative}")
         hashes[relative] = actual
+    runtime_files = config.get("runtime_files", [])
+    runtime_records = []
+    for item in sorted(runtime_files, key=lambda item: item["path"]):
+        relative = Path(item["path"])
+        if (relative.is_absolute() or ".." in relative.parts
+                or relative.parts[0] not in {"count_anything", "sam3"}):
+            raise ValueError("Invalid native runtime manifest path")
+        path = source / relative
+        actual = dict(path=item["path"], bytes=path.stat().st_size, sha256=file_sha256(path))
+        if actual != item:
+            raise ValueError(f"Native runtime file differs: {relative}")
+        runtime_records.append(actual)
+    fingerprint = None
+    if runtime_records:
+        from hashlib import sha256
+        fingerprint = sha256(json.dumps(runtime_records, sort_keys=True,
+                                        separators=(",", ":")).encode()).hexdigest()
+        if fingerprint != config["runtime_sha256_fingerprint"]:
+            raise ValueError("The complete native source fingerprint differs")
+        expected_paths = {item["path"] for item in runtime_records}
+        for package in ("count_anything", "sam3"):
+            for path in (source / package).rglob("*"):
+                if (path.is_file() and path.suffix.lower() in {".py", ".yaml", ".yml"}
+                        and str(path.relative_to(source)) not in expected_paths):
+                    raise ValueError("Unexpected native runtime source file")
     checkpoint_sha = file_sha256(checkpoint)
     if checkpoint_sha != config["checkpoint_sha256"]:
         raise ValueError("Count Anything checkpoint differs from the frozen C0 base")
@@ -168,11 +193,16 @@ def verify_native_assets(source, checkpoint, config):
         result = subprocess.run(["git", "--no-optional-locks", "-C", str(source),
                                  "rev-parse", "HEAD"], capture_output=True, text=True, check=True)
         revision = result.stdout.strip()
-        if revision != config["source_revision"]:
+        accepted = {config["source_revision"], *config.get("compatible_source_revisions", [])}
+        if revision not in accepted:
             raise ValueError("Count Anything source revision differs from the frozen C0 base")
     return dict(source_revision=revision, declared_source_revision=config["source_revision"],
                 source_sha256=hashes, checkpoint_sha256=checkpoint_sha,
-                source_hash_coverage="Selected native entrypoints; not a transitive environment freeze")
+                native_runtime_files=len(runtime_records), runtime_sha256_fingerprint=fingerprint,
+                source_hash_coverage=("All Count Anything/SAM3 native source and asset files; "
+                                      "external environment dependencies are recorded separately"
+                                      if runtime_records else
+                                      "Selected native entrypoints; not a transitive environment freeze"))
 
 
 class NativeCountAnything:
@@ -351,6 +381,9 @@ def run_counter(source, checkpoint, config_path, images_path, vocabulary_path,
         for relative, digest in assets["source_sha256"].items():
             if file_sha256(Path(source) / relative) != digest:
                 raise RuntimeError("Native source changed during prediction")
+        for item in config.get("runtime_files", []):
+            if file_sha256(Path(source) / item["path"]) != item["sha256"]:
+                raise RuntimeError("Native runtime source or assets changed during prediction")
         result = dict(summary, status="INDEPENDENT_COUNTER_PREDICTIONS_COMPLETE",
                       predictions_sha256=file_sha256(out / "predictions.jsonl"),
                       new_predictions_sha256=file_sha256(out / "new_predictions.jsonl"),

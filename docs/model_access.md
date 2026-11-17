@@ -70,3 +70,15 @@ The adapter sets `GTR_DISABLE_CUDA_GLA=1` and uses the verified FLA 0.5.0 path. 
 ## Tested counter dependencies
 
 The independent counter checks passed with the same Python 3.12.14 and PyTorch 2.7.1+cu126 runtime. Additional verified packages include OmegaConf 2.3.1, hydra-core 1.3.7, ftfy 6.1.1, regex 2026.9.10 and iopath 0.1.10. Use the pinned Count Anything source and its native SAM3 requirements in the counter environment. The lightweight evaluation package installs the scoring components.
+
+## Reproducible Count Anything source
+
+The public source is [Mengqi-Lei/count-anything](https://github.com/Mengqi-Lei/count-anything), pinned at `9ab1d5a82e4cc484697fd656f905845970000e23`. All 111 native Count Anything and SAM3 source/configuration/asset files are byte-identical to the archived source used for the counter cache. The complete native-runtime fingerprint is `1969641847da059a578b1f697efff6b405c6711ad23ef0a768e471f776c2ed9a`. The earlier local revision `c63f3c88dc27745557add765caf4c3b9717259e6` remains a compatible archived lineage identifier. The public revision supplies a directly obtainable reproduction source.
+
+```bash
+git clone https://github.com/Mengqi-Lei/count-anything.git ../counter-sources/count-anything
+git -C ../counter-sources/count-anything checkout 9ab1d5a82e4cc484697fd656f905845970000e23
+python -m pip install -r ../counter-sources/count-anything/requirements.txt
+```
+
+The full released checkpoint is [count_anything.pt](https://huggingface.co/MengqiLei/count-anything/resolve/main/count_anything.pt), 3,565,313,633 bytes, SHA-256 `2f84be3c3af5508388b732827e725cb6d6c4dd826ffda7f80de234ebd1ef0f92`. Put it in `pretrained/count_anything.pt`. The adapter verifies the full checkpoint and all native runtime files before inference and rechecks source/input locks before sealing outputs. Source comparison and the public-source cache-only command have passed. [Count Anything, arXiv, May 2026](https://arxiv.org/abs/2605.30846)

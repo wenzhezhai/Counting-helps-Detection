@@ -15,7 +15,7 @@ AP is COCO box AP at IoU 0.50–0.95 on a 0–100 scale. Each score keeps its da
 | D-FINE-X native Objects365 head | Fixed first 5,000 original validation images, 365 classes | — | **46.57** | Archived full run, fresh released-weight CPU entry verified, full rerun queued |
 | Group DETR v2 released Paddle checkpoint | COCO val2017 | 63.3 | Pending | Strict CPU and native GPU forward verified, full COCO run active |
 | TinyFormer-XL-PBM | COCO val2017 | 62.5 | Pending | Strict full-checkpoint CPU forward verified, full GPU run queued |
-| DINOv3 + Plain-DETR | COCO val2017, shortest edge 2048 | 65.6 | Pending | Approved head and backbone downloaded locally, server integration pending |
+| DINOv3 + Plain-DETR | COCO val2017, shortest edge 2048 | 65.6 | Pending | Head verified on server, complete backbone transferring |
 | RF-DETR-2XL | COCO val2017, 880 pixels | 60.1 | Deferred | User deferred execution pending the applicable platform license |
 
 The GTR run retained all 300 native candidates per image, including one finite box with negative height. Its sealed native prediction stream has SHA-256 `88c80bbec96d39f6a2aeb597c2e6af2b235f82bea90ccf2a682ab05955cd060d`. The reported AP rounds to the author's value. Counting-point controls are pending explicit completion of missing counter queries.
@@ -57,7 +57,7 @@ flowchart LR
     G[Evaluation annotations] --> E
 ```
 
-The counter receives the image and class text. Its predicted points determine support through frozen one-to-one matching. The confidence control supports the same number of highest-confidence candidates per image and class. Both apply the same score transformation. Candidate coordinates, labels and identities remain fixed.
+The counter uses the public Count Anything source pinned in `configs/counter.json`. The counter receives the image and class text. Its predicted points determine support through frozen one-to-one matching. The confidence control supports the same number of highest-confidence candidates per image and class. Both apply the same score transformation. Candidate coordinates, labels and identities remain fixed.
 
 ## Setup
 
@@ -154,6 +154,7 @@ docs/          Protocol, actual results, model access and Group DETR setup
 - Feng et al., *GTR*, arXiv, 22 September 2026. [Paper](https://arxiv.org/abs/2609.26590), [official code](https://github.com/Intellindust-AI-Lab/GTR).
 - Peng et al., *D-FINE*, ICLR, April 2025. [Paper](https://arxiv.org/abs/2410.13842), [official code](https://github.com/Peterande/D-FINE).
 - Chen et al., *Group DETR v2*, arXiv, November 2022. [Paper](https://arxiv.org/abs/2211.03594), [released Paddle implementation](https://github.com/PaddlePaddle/PaddleDetection/tree/release/2.9/configs/group_detr).
+- Lei et al., *Count Anything*, arXiv, May 2026. [Paper](https://arxiv.org/abs/2605.30846), [official source](https://github.com/Mengqi-Lei/count-anything), [released weights](https://huggingface.co/MengqiLei/count-anything).
 - ECDet / EdgeCrafter provides an additional recent-detector implementation check. [Official code](https://github.com/Intellindust-AI-Lab/EdgeCrafter), [paper](https://arxiv.org/abs/2603.18739).
 
 Upstream code and model weights retain their respective licenses and access conditions. Download them from their authors. This repository contains experiment adapters and evaluation code.
