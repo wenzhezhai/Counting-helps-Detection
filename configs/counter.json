@@ -1,0 +1,26 @@
+{
+  "name": "Count Anything independent C0",
+  "source_revision": "c63f3c88dc27745557add765caf4c3b9717259e6",
+  "checkpoint_sha256": "2f84be3c3af5508388b732827e725cb6d6c4dd826ffda7f80de234ebd1ef0f92",
+  "reference_runner_sha256": "9f37db1680a88677b3a9a7dfaaf56c1dcefc0889dc453bc6c63c5d6f624b11db",
+  "bmd_independent_runner_sha256": "a5579b02ef282df353496c2f24504ed19f9d34912648b6d9b07ee9557e3f073b",
+  "source_sha256": {
+    "count_anything/model_builder.py": "e3f4c3c74f94f2c129937140a6401cf1d0f3094afff82afefe9c822c1c0c5052",
+    "count_anything/eval/postprocessor.py": "50e6d3a51e25a64a816ce6ca76f3ed1c3c106e511360572d41a3c9088b222781",
+    "sam3/model_builder.py": "f187b5e4003e78acbd829e53ad79dc94fc2fa4b24b7a364aa2a682c02ff5dcf2",
+    "sam3/eval/counting_postprocessor.py": "b71a66034ae2a9be07707b3e8112719cf94803b32867802fe119e0299276c8c3",
+    "sam3/model/sam3_image_processor.py": "07c9ca0f24a55def09e9915a7ebd05d94d68a52d04d475e467aa74596d464294",
+    "sam3/model/geometry_encoders.py": "80d597cd7e4b2180c38a67a3dd10cae0023ed98b1f673b3131f1886a40d7e2f5"
+  },
+  "seed": 123,
+  "presence": "on",
+  "resolution": 1008,
+  "postprocessor": {
+    "use_original_ids": false,
+    "pdc_score_threshold": 0.5,
+    "rsc_score_threshold": 0.5,
+    "rsc_iom_filter_enabled": true,
+    "rsc_iom_threshold": 0.5,
+    "to_cpu": false
+  }
+}

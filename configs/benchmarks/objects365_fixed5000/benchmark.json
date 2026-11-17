@@ -1,0 +1,9 @@
+{
+  "original_image_manifest_sha256": "7c2bf33c7af677015c0eb3e8c5c7556404e371a44cc2fc3d93ba4de8f9da6036",
+  "original_vocabulary_sha256": "aa3553758b6b6c37fa55e2bcbf055e9f40117c1ecfbd825b71b896f8968e33af",
+  "evaluation_gt_sha256": "c96a69a9059b95e23cd329bb8dbaa3959b92c89c828c2255d42667708818988f",
+  "image_count": 5000,
+  "category_count": 365,
+  "order": "preserved from frozen source manifest",
+  "public_image_manifest_sha256": "1eb2a65007867abc35e782d5b16f04c6f979fed1601639294e154f981f574c87"
+}

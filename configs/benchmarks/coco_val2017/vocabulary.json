@@ -1,0 +1,322 @@
+[
+  {
+    "category_id": 1,
+    "text": "person"
+  },
+  {
+    "category_id": 2,
+    "text": "bicycle"
+  },
+  {
+    "category_id": 3,
+    "text": "car"
+  },
+  {
+    "category_id": 4,
+    "text": "motorcycle"
+  },
+  {
+    "category_id": 5,
+    "text": "airplane"
+  },
+  {
+    "category_id": 6,
+    "text": "bus"
+  },
+  {
+    "category_id": 7,
+    "text": "train"
+  },
+  {
+    "category_id": 8,
+    "text": "truck"
+  },
+  {
+    "category_id": 9,
+    "text": "boat"
+  },
+  {
+    "category_id": 10,
+    "text": "traffic light"
+  },
+  {
+    "category_id": 11,
+    "text": "fire hydrant"
+  },
+  {
+    "category_id": 13,
+    "text": "stop sign"
+  },
+  {
+    "category_id": 14,
+    "text": "parking meter"
+  },
+  {
+    "category_id": 15,
+    "text": "bench"
+  },
+  {
+    "category_id": 16,
+    "text": "bird"
+  },
+  {
+    "category_id": 17,
+    "text": "cat"
+  },
+  {
+    "category_id": 18,
+    "text": "dog"
+  },
+  {
+    "category_id": 19,
+    "text": "horse"
+  },
+  {
+    "category_id": 20,
+    "text": "sheep"
+  },
+  {
+    "category_id": 21,
+    "text": "cow"
+  },
+  {
+    "category_id": 22,
+    "text": "elephant"
+  },
+  {
+    "category_id": 23,
+    "text": "bear"
+  },
+  {
+    "category_id": 24,
+    "text": "zebra"
+  },
+  {
+    "category_id": 25,
+    "text": "giraffe"
+  },
+  {
+    "category_id": 27,
+    "text": "backpack"
+  },
+  {
+    "category_id": 28,
+    "text": "umbrella"
+  },
+  {
+    "category_id": 31,
+    "text": "handbag"
+  },
+  {
+    "category_id": 32,
+    "text": "tie"
+  },
+  {
+    "category_id": 33,
+    "text": "suitcase"
+  },
+  {
+    "category_id": 34,
+    "text": "frisbee"
+  },
+  {
+    "category_id": 35,
+    "text": "skis"
+  },
+  {
+    "category_id": 36,
+    "text": "snowboard"
+  },
+  {
+    "category_id": 37,
+    "text": "sports ball"
+  },
+  {
+    "category_id": 38,
+    "text": "kite"
+  },
+  {
+    "category_id": 39,
+    "text": "baseball bat"
+  },
+  {
+    "category_id": 40,
+    "text": "baseball glove"
+  },
+  {
+    "category_id": 41,
+    "text": "skateboard"
+  },
+  {
+    "category_id": 42,
+    "text": "surfboard"
+  },
+  {
+    "category_id": 43,
+    "text": "tennis racket"
+  },
+  {
+    "category_id": 44,
+    "text": "bottle"
+  },
+  {
+    "category_id": 46,
+    "text": "wine glass"
+  },
+  {
+    "category_id": 47,
+    "text": "cup"
+  },
+  {
+    "category_id": 48,
+    "text": "fork"
+  },
+  {
+    "category_id": 49,
+    "text": "knife"
+  },
+  {
+    "category_id": 50,
+    "text": "spoon"
+  },
+  {
+    "category_id": 51,
+    "text": "bowl"
+  },
+  {
+    "category_id": 52,
+    "text": "banana"
+  },
+  {
+    "category_id": 53,
+    "text": "apple"
+  },
+  {
+    "category_id": 54,
+    "text": "sandwich"
+  },
+  {
+    "category_id": 55,
+    "text": "orange"
+  },
+  {
+    "category_id": 56,
+    "text": "broccoli"
+  },
+  {
+    "category_id": 57,
+    "text": "carrot"
+  },
+  {
+    "category_id": 58,
+    "text": "hot dog"
+  },
+  {
+    "category_id": 59,
+    "text": "pizza"
+  },
+  {
+    "category_id": 60,
+    "text": "donut"
+  },
+  {
+    "category_id": 61,
+    "text": "cake"
+  },
+  {
+    "category_id": 62,
+    "text": "chair"
+  },
+  {
+    "category_id": 63,
+    "text": "couch"
+  },
+  {
+    "category_id": 64,
+    "text": "potted plant"
+  },
+  {
+    "category_id": 65,
+    "text": "bed"
+  },
+  {
+    "category_id": 67,
+    "text": "dining table"
+  },
+  {
+    "category_id": 70,
+    "text": "toilet"
+  },
+  {
+    "category_id": 72,
+    "text": "tv"
+  },
+  {
+    "category_id": 73,
+    "text": "laptop"
+  },
+  {
+    "category_id": 74,
+    "text": "mouse"
+  },
+  {
+    "category_id": 75,
+    "text": "remote"
+  },
+  {
+    "category_id": 76,
+    "text": "keyboard"
+  },
+  {
+    "category_id": 77,
+    "text": "cell phone"
+  },
+  {
+    "category_id": 78,
+    "text": "microwave"
+  },
+  {
+    "category_id": 79,
+    "text": "oven"
+  },
+  {
+    "category_id": 80,
+    "text": "toaster"
+  },
+  {
+    "category_id": 81,
+    "text": "sink"
+  },
+  {
+    "category_id": 82,
+    "text": "refrigerator"
+  },
+  {
+    "category_id": 84,
+    "text": "book"
+  },
+  {
+    "category_id": 85,
+    "text": "clock"
+  },
+  {
+    "category_id": 86,
+    "text": "vase"
+  },
+  {
+    "category_id": 87,
+    "text": "scissors"
+  },
+  {
+    "category_id": 88,
+    "text": "teddy bear"
+  },
+  {
+    "category_id": 89,
+    "text": "hair drier"
+  },
+  {
+    "category_id": 90,
+    "text": "toothbrush"
+  }
+]

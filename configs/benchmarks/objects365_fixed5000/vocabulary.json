@@ -1,0 +1,1827 @@
+[
+  {
+    "category_id": 1,
+    "original_text": "Person",
+    "text": "Person"
+  },
+  {
+    "category_id": 2,
+    "original_text": "Sneakers",
+    "text": "Sneakers"
+  },
+  {
+    "category_id": 3,
+    "original_text": "Chair",
+    "text": "Chair"
+  },
+  {
+    "category_id": 4,
+    "original_text": "Other Shoes",
+    "text": "Other Shoes"
+  },
+  {
+    "category_id": 5,
+    "original_text": "Hat",
+    "text": "Hat"
+  },
+  {
+    "category_id": 6,
+    "original_text": "Car",
+    "text": "Car"
+  },
+  {
+    "category_id": 7,
+    "original_text": "Lamp",
+    "text": "Lamp"
+  },
+  {
+    "category_id": 8,
+    "original_text": "Glasses",
+    "text": "Glasses"
+  },
+  {
+    "category_id": 9,
+    "original_text": "Bottle",
+    "text": "Bottle"
+  },
+  {
+    "category_id": 10,
+    "original_text": "Desk",
+    "text": "Desk"
+  },
+  {
+    "category_id": 11,
+    "original_text": "Cup",
+    "text": "Cup"
+  },
+  {
+    "category_id": 12,
+    "original_text": "Street Lights",
+    "text": "Street Lights"
+  },
+  {
+    "category_id": 13,
+    "original_text": "Cabinet/shelf",
+    "text": "Cabinet/shelf"
+  },
+  {
+    "category_id": 14,
+    "original_text": "Handbag/Satchel",
+    "text": "Handbag/Satchel"
+  },
+  {
+    "category_id": 15,
+    "original_text": "Bracelet",
+    "text": "Bracelet"
+  },
+  {
+    "category_id": 16,
+    "original_text": "Plate",
+    "text": "Plate"
+  },
+  {
+    "category_id": 17,
+    "original_text": "Picture/Frame",
+    "text": "Picture/Frame"
+  },
+  {
+    "category_id": 18,
+    "original_text": "Helmet",
+    "text": "Helmet"
+  },
+  {
+    "category_id": 19,
+    "original_text": "Book",
+    "text": "Book"
+  },
+  {
+    "category_id": 20,
+    "original_text": "Gloves",
+    "text": "Gloves"
+  },
+  {
+    "category_id": 21,
+    "original_text": "Storage box",
+    "text": "Storage box"
+  },
+  {
+    "category_id": 22,
+    "original_text": "Boat",
+    "text": "Boat"
+  },
+  {
+    "category_id": 23,
+    "original_text": "Leather Shoes",
+    "text": "Leather Shoes"
+  },
+  {
+    "category_id": 24,
+    "original_text": "Flower",
+    "text": "Flower"
+  },
+  {
+    "category_id": 25,
+    "original_text": "Bench",
+    "text": "Bench"
+  },
+  {
+    "category_id": 26,
+    "original_text": "Potted Plant",
+    "text": "Potted Plant"
+  },
+  {
+    "category_id": 27,
+    "original_text": "Bowl/Basin",
+    "text": "Bowl/Basin"
+  },
+  {
+    "category_id": 28,
+    "original_text": "Flag",
+    "text": "Flag"
+  },
+  {
+    "category_id": 29,
+    "original_text": "Pillow",
+    "text": "Pillow"
+  },
+  {
+    "category_id": 30,
+    "original_text": "Boots",
+    "text": "Boots"
+  },
+  {
+    "category_id": 31,
+    "original_text": "Vase",
+    "text": "Vase"
+  },
+  {
+    "category_id": 32,
+    "original_text": "Microphone",
+    "text": "Microphone"
+  },
+  {
+    "category_id": 33,
+    "original_text": "Necklace",
+    "text": "Necklace"
+  },
+  {
+    "category_id": 34,
+    "original_text": "Ring",
+    "text": "Ring"
+  },
+  {
+    "category_id": 35,
+    "original_text": "SUV",
+    "text": "SUV"
+  },
+  {
+    "category_id": 36,
+    "original_text": "Wine Glass",
+    "text": "Wine Glass"
+  },
+  {
+    "category_id": 37,
+    "original_text": "Belt",
+    "text": "Belt"
+  },
+  {
+    "category_id": 38,
+    "original_text": "Moniter/TV",
+    "text": "Moniter/TV"
+  },
+  {
+    "category_id": 39,
+    "original_text": "Backpack",
+    "text": "Backpack"
+  },
+  {
+    "category_id": 40,
+    "original_text": "Umbrella",
+    "text": "Umbrella"
+  },
+  {
+    "category_id": 41,
+    "original_text": "Traffic Light",
+    "text": "Traffic Light"
+  },
+  {
+    "category_id": 42,
+    "original_text": "Speaker",
+    "text": "Speaker"
+  },
+  {
+    "category_id": 43,
+    "original_text": "Watch",
+    "text": "Watch"
+  },
+  {
+    "category_id": 44,
+    "original_text": "Tie",
+    "text": "Tie"
+  },
+  {
+    "category_id": 45,
+    "original_text": "Trash bin Can",
+    "text": "Trash bin Can"
+  },
+  {
+    "category_id": 46,
+    "original_text": "Slippers",
+    "text": "Slippers"
+  },
+  {
+    "category_id": 47,
+    "original_text": "Bicycle",
+    "text": "Bicycle"
+  },
+  {
+    "category_id": 48,
+    "original_text": "Stool",
+    "text": "Stool"
+  },
+  {
+    "category_id": 49,
+    "original_text": "Barrel/bucket",
+    "text": "Barrel/bucket"
+  },
+  {
+    "category_id": 50,
+    "original_text": "Van",
+    "text": "Van"
+  },
+  {
+    "category_id": 51,
+    "original_text": "Couch",
+    "text": "Couch"
+  },
+  {
+    "category_id": 52,
+    "original_text": "Sandals",
+    "text": "Sandals"
+  },
+  {
+    "category_id": 53,
+    "original_text": "Bakset",
+    "text": "Bakset"
+  },
+  {
+    "category_id": 54,
+    "original_text": "Drum",
+    "text": "Drum"
+  },
+  {
+    "category_id": 55,
+    "original_text": "Pen/Pencil",
+    "text": "Pen/Pencil"
+  },
+  {
+    "category_id": 56,
+    "original_text": "Bus",
+    "text": "Bus"
+  },
+  {
+    "category_id": 57,
+    "original_text": "Wild Bird",
+    "text": "Wild Bird"
+  },
+  {
+    "category_id": 58,
+    "original_text": "High Heels",
+    "text": "High Heels"
+  },
+  {
+    "category_id": 59,
+    "original_text": "Motorcycle",
+    "text": "Motorcycle"
+  },
+  {
+    "category_id": 60,
+    "original_text": "Guitar",
+    "text": "Guitar"
+  },
+  {
+    "category_id": 61,
+    "original_text": "Carpet",
+    "text": "Carpet"
+  },
+  {
+    "category_id": 62,
+    "original_text": "Cell Phone",
+    "text": "Cell Phone"
+  },
+  {
+    "category_id": 63,
+    "original_text": "Bread",
+    "text": "Bread"
+  },
+  {
+    "category_id": 64,
+    "original_text": "Camera",
+    "text": "Camera"
+  },
+  {
+    "category_id": 65,
+    "original_text": "Canned",
+    "text": "Canned"
+  },
+  {
+    "category_id": 66,
+    "original_text": "Truck",
+    "text": "Truck"
+  },
+  {
+    "category_id": 67,
+    "original_text": "Traffic cone",
+    "text": "Traffic cone"
+  },
+  {
+    "category_id": 68,
+    "original_text": "Cymbal",
+    "text": "Cymbal"
+  },
+  {
+    "category_id": 69,
+    "original_text": "Lifesaver",
+    "text": "Lifesaver"
+  },
+  {
+    "category_id": 70,
+    "original_text": "Towel",
+    "text": "Towel"
+  },
+  {
+    "category_id": 71,
+    "original_text": "Stuffed Toy",
+    "text": "Stuffed Toy"
+  },
+  {
+    "category_id": 72,
+    "original_text": "Candle",
+    "text": "Candle"
+  },
+  {
+    "category_id": 73,
+    "original_text": "Sailboat",
+    "text": "Sailboat"
+  },
+  {
+    "category_id": 74,
+    "original_text": "Laptop",
+    "text": "Laptop"
+  },
+  {
+    "category_id": 75,
+    "original_text": "Awning",
+    "text": "Awning"
+  },
+  {
+    "category_id": 76,
+    "original_text": "Bed",
+    "text": "Bed"
+  },
+  {
+    "category_id": 77,
+    "original_text": "Faucet",
+    "text": "Faucet"
+  },
+  {
+    "category_id": 78,
+    "original_text": "Tent",
+    "text": "Tent"
+  },
+  {
+    "category_id": 79,
+    "original_text": "Horse",
+    "text": "Horse"
+  },
+  {
+    "category_id": 80,
+    "original_text": "Mirror",
+    "text": "Mirror"
+  },
+  {
+    "category_id": 81,
+    "original_text": "Power outlet",
+    "text": "Power outlet"
+  },
+  {
+    "category_id": 82,
+    "original_text": "Sink",
+    "text": "Sink"
+  },
+  {
+    "category_id": 83,
+    "original_text": "Apple",
+    "text": "Apple"
+  },
+  {
+    "category_id": 84,
+    "original_text": "Air Conditioner",
+    "text": "Air Conditioner"
+  },
+  {
+    "category_id": 85,
+    "original_text": "Knife",
+    "text": "Knife"
+  },
+  {
+    "category_id": 86,
+    "original_text": "Hockey Stick",
+    "text": "Hockey Stick"
+  },
+  {
+    "category_id": 87,
+    "original_text": "Paddle",
+    "text": "Paddle"
+  },
+  {
+    "category_id": 88,
+    "original_text": "Pickup Truck",
+    "text": "Pickup Truck"
+  },
+  {
+    "category_id": 89,
+    "original_text": "Fork",
+    "text": "Fork"
+  },
+  {
+    "category_id": 90,
+    "original_text": "Traffic Sign",
+    "text": "Traffic Sign"
+  },
+  {
+    "category_id": 91,
+    "original_text": "Ballon",
+    "text": "Ballon"
+  },
+  {
+    "category_id": 92,
+    "original_text": "Tripod",
+    "text": "Tripod"
+  },
+  {
+    "category_id": 93,
+    "original_text": "Dog",
+    "text": "Dog"
+  },
+  {
+    "category_id": 94,
+    "original_text": "Spoon",
+    "text": "Spoon"
+  },
+  {
+    "category_id": 95,
+    "original_text": "Clock",
+    "text": "Clock"
+  },
+  {
+    "category_id": 96,
+    "original_text": "Pot",
+    "text": "Pot"
+  },
+  {
+    "category_id": 97,
+    "original_text": "Cow",
+    "text": "Cow"
+  },
+  {
+    "category_id": 98,
+    "original_text": "Cake",
+    "text": "Cake"
+  },
+  {
+    "category_id": 99,
+    "original_text": "Dinning Table",
+    "text": "Dinning Table"
+  },
+  {
+    "category_id": 100,
+    "original_text": "Sheep",
+    "text": "Sheep"
+  },
+  {
+    "category_id": 101,
+    "original_text": "Hanger",
+    "text": "Hanger"
+  },
+  {
+    "category_id": 102,
+    "original_text": "Blackboard/Whiteboard",
+    "text": "Blackboard/Whiteboard"
+  },
+  {
+    "category_id": 103,
+    "original_text": "Napkin",
+    "text": "Napkin"
+  },
+  {
+    "category_id": 104,
+    "original_text": "Other Fish",
+    "text": "Other Fish"
+  },
+  {
+    "category_id": 105,
+    "original_text": "Orange/Tangerine",
+    "text": "Orange/Tangerine"
+  },
+  {
+    "category_id": 106,
+    "original_text": "Toiletry",
+    "text": "Toiletry"
+  },
+  {
+    "category_id": 107,
+    "original_text": "Keyboard",
+    "text": "Keyboard"
+  },
+  {
+    "category_id": 108,
+    "original_text": "Tomato",
+    "text": "Tomato"
+  },
+  {
+    "category_id": 109,
+    "original_text": "Lantern",
+    "text": "Lantern"
+  },
+  {
+    "category_id": 110,
+    "original_text": "Machinery Vehicle",
+    "text": "Machinery Vehicle"
+  },
+  {
+    "category_id": 111,
+    "original_text": "Fan",
+    "text": "Fan"
+  },
+  {
+    "category_id": 112,
+    "original_text": "Green Vegetables",
+    "text": "Green Vegetables"
+  },
+  {
+    "category_id": 113,
+    "original_text": "Banana",
+    "text": "Banana"
+  },
+  {
+    "category_id": 114,
+    "original_text": "Baseball Glove",
+    "text": "Baseball Glove"
+  },
+  {
+    "category_id": 115,
+    "original_text": "Airplane",
+    "text": "Airplane"
+  },
+  {
+    "category_id": 116,
+    "original_text": "Mouse",
+    "text": "Mouse"
+  },
+  {
+    "category_id": 117,
+    "original_text": "Train",
+    "text": "Train"
+  },
+  {
+    "category_id": 118,
+    "original_text": "Pumpkin",
+    "text": "Pumpkin"
+  },
+  {
+    "category_id": 119,
+    "original_text": "Soccer",
+    "text": "Soccer"
+  },
+  {
+    "category_id": 120,
+    "original_text": "Skiboard",
+    "text": "Skiboard"
+  },
+  {
+    "category_id": 121,
+    "original_text": "Luggage",
+    "text": "Luggage"
+  },
+  {
+    "category_id": 122,
+    "original_text": "Nightstand",
+    "text": "Nightstand"
+  },
+  {
+    "category_id": 123,
+    "original_text": "Tea pot",
+    "text": "Tea pot"
+  },
+  {
+    "category_id": 124,
+    "original_text": "Telephone",
+    "text": "Telephone"
+  },
+  {
+    "category_id": 125,
+    "original_text": "Trolley",
+    "text": "Trolley"
+  },
+  {
+    "category_id": 126,
+    "original_text": "Head Phone",
+    "text": "Head Phone"
+  },
+  {
+    "category_id": 127,
+    "original_text": "Sports Car",
+    "text": "Sports Car"
+  },
+  {
+    "category_id": 128,
+    "original_text": "Stop Sign",
+    "text": "Stop Sign"
+  },
+  {
+    "category_id": 129,
+    "original_text": "Dessert",
+    "text": "Dessert"
+  },
+  {
+    "category_id": 130,
+    "original_text": "Scooter",
+    "text": "Scooter"
+  },
+  {
+    "category_id": 131,
+    "original_text": "Stroller",
+    "text": "Stroller"
+  },
+  {
+    "category_id": 132,
+    "original_text": "Crane",
+    "text": "Crane"
+  },
+  {
+    "category_id": 133,
+    "original_text": "Remote",
+    "text": "Remote"
+  },
+  {
+    "category_id": 134,
+    "original_text": "Refrigerator",
+    "text": "Refrigerator"
+  },
+  {
+    "category_id": 135,
+    "original_text": "Oven",
+    "text": "Oven"
+  },
+  {
+    "category_id": 136,
+    "original_text": "Lemon",
+    "text": "Lemon"
+  },
+  {
+    "category_id": 137,
+    "original_text": "Duck",
+    "text": "Duck"
+  },
+  {
+    "category_id": 138,
+    "original_text": "Baseball Bat",
+    "text": "Baseball Bat"
+  },
+  {
+    "category_id": 139,
+    "original_text": "Surveillance Camera",
+    "text": "Surveillance Camera"
+  },
+  {
+    "category_id": 140,
+    "original_text": "Cat",
+    "text": "Cat"
+  },
+  {
+    "category_id": 141,
+    "original_text": "Jug",
+    "text": "Jug"
+  },
+  {
+    "category_id": 142,
+    "original_text": "Broccoli",
+    "text": "Broccoli"
+  },
+  {
+    "category_id": 143,
+    "original_text": "Piano",
+    "text": "Piano"
+  },
+  {
+    "category_id": 144,
+    "original_text": "Pizza",
+    "text": "Pizza"
+  },
+  {
+    "category_id": 145,
+    "original_text": "Elephant",
+    "text": "Elephant"
+  },
+  {
+    "category_id": 146,
+    "original_text": "Skateboard",
+    "text": "Skateboard"
+  },
+  {
+    "category_id": 147,
+    "original_text": "Surfboard",
+    "text": "Surfboard"
+  },
+  {
+    "category_id": 148,
+    "original_text": "Gun",
+    "text": "Gun"
+  },
+  {
+    "category_id": 149,
+    "original_text": "Skating and Skiing shoes",
+    "text": "Skating and Skiing shoes"
+  },
+  {
+    "category_id": 150,
+    "original_text": "Gas stove",
+    "text": "Gas stove"
+  },
+  {
+    "category_id": 151,
+    "original_text": "Donut",
+    "text": "Donut"
+  },
+  {
+    "category_id": 152,
+    "original_text": "Bow Tie",
+    "text": "Bow Tie"
+  },
+  {
+    "category_id": 153,
+    "original_text": "Carrot",
+    "text": "Carrot"
+  },
+  {
+    "category_id": 154,
+    "original_text": "Toilet",
+    "text": "Toilet"
+  },
+  {
+    "category_id": 155,
+    "original_text": "Kite",
+    "text": "Kite"
+  },
+  {
+    "category_id": 156,
+    "original_text": "Strawberry",
+    "text": "Strawberry"
+  },
+  {
+    "category_id": 157,
+    "original_text": "Other Balls",
+    "text": "Other Balls"
+  },
+  {
+    "category_id": 158,
+    "original_text": "Shovel",
+    "text": "Shovel"
+  },
+  {
+    "category_id": 159,
+    "original_text": "Pepper",
+    "text": "Pepper"
+  },
+  {
+    "category_id": 160,
+    "original_text": "Computer Box",
+    "text": "Computer Box"
+  },
+  {
+    "category_id": 161,
+    "original_text": "Toilet Paper",
+    "text": "Toilet Paper"
+  },
+  {
+    "category_id": 162,
+    "original_text": "Cleaning Products",
+    "text": "Cleaning Products"
+  },
+  {
+    "category_id": 163,
+    "original_text": "Chopsticks",
+    "text": "Chopsticks"
+  },
+  {
+    "category_id": 164,
+    "original_text": "Microwave",
+    "text": "Microwave"
+  },
+  {
+    "category_id": 165,
+    "original_text": "Pigeon",
+    "text": "Pigeon"
+  },
+  {
+    "category_id": 166,
+    "original_text": "Baseball",
+    "text": "Baseball"
+  },
+  {
+    "category_id": 167,
+    "original_text": "Cutting/chopping Board",
+    "text": "Cutting/chopping Board"
+  },
+  {
+    "category_id": 168,
+    "original_text": "Coffee Table",
+    "text": "Coffee Table"
+  },
+  {
+    "category_id": 169,
+    "original_text": "Side Table",
+    "text": "Side Table"
+  },
+  {
+    "category_id": 170,
+    "original_text": "Scissors",
+    "text": "Scissors"
+  },
+  {
+    "category_id": 171,
+    "original_text": "Marker",
+    "text": "Marker"
+  },
+  {
+    "category_id": 172,
+    "original_text": "Pie",
+    "text": "Pie"
+  },
+  {
+    "category_id": 173,
+    "original_text": "Ladder",
+    "text": "Ladder"
+  },
+  {
+    "category_id": 174,
+    "original_text": "Snowboard",
+    "text": "Snowboard"
+  },
+  {
+    "category_id": 175,
+    "original_text": "Cookies",
+    "text": "Cookies"
+  },
+  {
+    "category_id": 176,
+    "original_text": "Radiator",
+    "text": "Radiator"
+  },
+  {
+    "category_id": 177,
+    "original_text": "Fire Hydrant",
+    "text": "Fire Hydrant"
+  },
+  {
+    "category_id": 178,
+    "original_text": "Basketball",
+    "text": "Basketball"
+  },
+  {
+    "category_id": 179,
+    "original_text": "Zebra",
+    "text": "Zebra"
+  },
+  {
+    "category_id": 180,
+    "original_text": "Grape",
+    "text": "Grape"
+  },
+  {
+    "category_id": 181,
+    "original_text": "Giraffe",
+    "text": "Giraffe"
+  },
+  {
+    "category_id": 182,
+    "original_text": "Potato",
+    "text": "Potato"
+  },
+  {
+    "category_id": 183,
+    "original_text": "Sausage",
+    "text": "Sausage"
+  },
+  {
+    "category_id": 184,
+    "original_text": "Tricycle",
+    "text": "Tricycle"
+  },
+  {
+    "category_id": 185,
+    "original_text": "Violin",
+    "text": "Violin"
+  },
+  {
+    "category_id": 186,
+    "original_text": "Egg",
+    "text": "Egg"
+  },
+  {
+    "category_id": 187,
+    "original_text": "Fire Extinguisher",
+    "text": "Fire Extinguisher"
+  },
+  {
+    "category_id": 188,
+    "original_text": "Candy",
+    "text": "Candy"
+  },
+  {
+    "category_id": 189,
+    "original_text": "Fire Truck",
+    "text": "Fire Truck"
+  },
+  {
+    "category_id": 190,
+    "original_text": "Billards",
+    "text": "Billards"
+  },
+  {
+    "category_id": 191,
+    "original_text": "Converter",
+    "text": "Converter"
+  },
+  {
+    "category_id": 192,
+    "original_text": "Bathtub",
+    "text": "Bathtub"
+  },
+  {
+    "category_id": 193,
+    "original_text": "Wheelchair",
+    "text": "Wheelchair"
+  },
+  {
+    "category_id": 194,
+    "original_text": "Golf Club",
+    "text": "Golf Club"
+  },
+  {
+    "category_id": 195,
+    "original_text": "Briefcase",
+    "text": "Briefcase"
+  },
+  {
+    "category_id": 196,
+    "original_text": "Cucumber",
+    "text": "Cucumber"
+  },
+  {
+    "category_id": 197,
+    "original_text": "Cigar/Cigarette ",
+    "text": "Cigar/Cigarette"
+  },
+  {
+    "category_id": 198,
+    "original_text": "Paint Brush",
+    "text": "Paint Brush"
+  },
+  {
+    "category_id": 199,
+    "original_text": "Pear",
+    "text": "Pear"
+  },
+  {
+    "category_id": 200,
+    "original_text": "Heavy Truck",
+    "text": "Heavy Truck"
+  },
+  {
+    "category_id": 201,
+    "original_text": "Hamburger",
+    "text": "Hamburger"
+  },
+  {
+    "category_id": 202,
+    "original_text": "Extractor",
+    "text": "Extractor"
+  },
+  {
+    "category_id": 203,
+    "original_text": "Extention Cord",
+    "text": "Extention Cord"
+  },
+  {
+    "category_id": 204,
+    "original_text": "Tong",
+    "text": "Tong"
+  },
+  {
+    "category_id": 205,
+    "original_text": "Tennis Racket",
+    "text": "Tennis Racket"
+  },
+  {
+    "category_id": 206,
+    "original_text": "Folder",
+    "text": "Folder"
+  },
+  {
+    "category_id": 207,
+    "original_text": "American Football",
+    "text": "American Football"
+  },
+  {
+    "category_id": 208,
+    "original_text": "earphone",
+    "text": "earphone"
+  },
+  {
+    "category_id": 209,
+    "original_text": "Mask",
+    "text": "Mask"
+  },
+  {
+    "category_id": 210,
+    "original_text": "Kettle",
+    "text": "Kettle"
+  },
+  {
+    "category_id": 211,
+    "original_text": "Tennis",
+    "text": "Tennis"
+  },
+  {
+    "category_id": 212,
+    "original_text": "Ship",
+    "text": "Ship"
+  },
+  {
+    "category_id": 213,
+    "original_text": "Swing",
+    "text": "Swing"
+  },
+  {
+    "category_id": 214,
+    "original_text": "Coffee Machine",
+    "text": "Coffee Machine"
+  },
+  {
+    "category_id": 215,
+    "original_text": "Slide",
+    "text": "Slide"
+  },
+  {
+    "category_id": 216,
+    "original_text": "Carriage",
+    "text": "Carriage"
+  },
+  {
+    "category_id": 217,
+    "original_text": "Onion",
+    "text": "Onion"
+  },
+  {
+    "category_id": 218,
+    "original_text": "Green beans",
+    "text": "Green beans"
+  },
+  {
+    "category_id": 219,
+    "original_text": "Projector",
+    "text": "Projector"
+  },
+  {
+    "category_id": 220,
+    "original_text": "Frisbee",
+    "text": "Frisbee"
+  },
+  {
+    "category_id": 221,
+    "original_text": "Washing Machine/Drying Machine",
+    "text": "Washing Machine/Drying Machine"
+  },
+  {
+    "category_id": 222,
+    "original_text": "Chicken",
+    "text": "Chicken"
+  },
+  {
+    "category_id": 223,
+    "original_text": "Printer",
+    "text": "Printer"
+  },
+  {
+    "category_id": 224,
+    "original_text": "Watermelon",
+    "text": "Watermelon"
+  },
+  {
+    "category_id": 225,
+    "original_text": "Saxophone",
+    "text": "Saxophone"
+  },
+  {
+    "category_id": 226,
+    "original_text": "Tissue",
+    "text": "Tissue"
+  },
+  {
+    "category_id": 227,
+    "original_text": "Toothbrush",
+    "text": "Toothbrush"
+  },
+  {
+    "category_id": 228,
+    "original_text": "Ice cream",
+    "text": "Ice cream"
+  },
+  {
+    "category_id": 229,
+    "original_text": "Hotair ballon",
+    "text": "Hotair ballon"
+  },
+  {
+    "category_id": 230,
+    "original_text": "Cello",
+    "text": "Cello"
+  },
+  {
+    "category_id": 231,
+    "original_text": "French Fries",
+    "text": "French Fries"
+  },
+  {
+    "category_id": 232,
+    "original_text": "Scale",
+    "text": "Scale"
+  },
+  {
+    "category_id": 233,
+    "original_text": "Trophy",
+    "text": "Trophy"
+  },
+  {
+    "category_id": 234,
+    "original_text": "Cabbage",
+    "text": "Cabbage"
+  },
+  {
+    "category_id": 235,
+    "original_text": "Hot dog",
+    "text": "Hot dog"
+  },
+  {
+    "category_id": 236,
+    "original_text": "Blender",
+    "text": "Blender"
+  },
+  {
+    "category_id": 237,
+    "original_text": "Peach",
+    "text": "Peach"
+  },
+  {
+    "category_id": 238,
+    "original_text": "Rice",
+    "text": "Rice"
+  },
+  {
+    "category_id": 239,
+    "original_text": "Wallet/Purse",
+    "text": "Wallet/Purse"
+  },
+  {
+    "category_id": 240,
+    "original_text": "Volleyball",
+    "text": "Volleyball"
+  },
+  {
+    "category_id": 241,
+    "original_text": "Deer",
+    "text": "Deer"
+  },
+  {
+    "category_id": 242,
+    "original_text": "Goose",
+    "text": "Goose"
+  },
+  {
+    "category_id": 243,
+    "original_text": "Tape",
+    "text": "Tape"
+  },
+  {
+    "category_id": 244,
+    "original_text": "Tablet",
+    "text": "Tablet"
+  },
+  {
+    "category_id": 245,
+    "original_text": "Cosmetics",
+    "text": "Cosmetics"
+  },
+  {
+    "category_id": 246,
+    "original_text": "Trumpet",
+    "text": "Trumpet"
+  },
+  {
+    "category_id": 247,
+    "original_text": "Pineapple",
+    "text": "Pineapple"
+  },
+  {
+    "category_id": 248,
+    "original_text": "Golf Ball",
+    "text": "Golf Ball"
+  },
+  {
+    "category_id": 249,
+    "original_text": "Ambulance",
+    "text": "Ambulance"
+  },
+  {
+    "category_id": 250,
+    "original_text": "Parking meter",
+    "text": "Parking meter"
+  },
+  {
+    "category_id": 251,
+    "original_text": "Mango",
+    "text": "Mango"
+  },
+  {
+    "category_id": 252,
+    "original_text": "Key",
+    "text": "Key"
+  },
+  {
+    "category_id": 253,
+    "original_text": "Hurdle",
+    "text": "Hurdle"
+  },
+  {
+    "category_id": 254,
+    "original_text": "Fishing Rod",
+    "text": "Fishing Rod"
+  },
+  {
+    "category_id": 255,
+    "original_text": "Medal",
+    "text": "Medal"
+  },
+  {
+    "category_id": 256,
+    "original_text": "Flute",
+    "text": "Flute"
+  },
+  {
+    "category_id": 257,
+    "original_text": "Brush",
+    "text": "Brush"
+  },
+  {
+    "category_id": 258,
+    "original_text": "Penguin",
+    "text": "Penguin"
+  },
+  {
+    "category_id": 259,
+    "original_text": "Megaphone",
+    "text": "Megaphone"
+  },
+  {
+    "category_id": 260,
+    "original_text": "Corn",
+    "text": "Corn"
+  },
+  {
+    "category_id": 261,
+    "original_text": "Lettuce",
+    "text": "Lettuce"
+  },
+  {
+    "category_id": 262,
+    "original_text": "Garlic",
+    "text": "Garlic"
+  },
+  {
+    "category_id": 263,
+    "original_text": "Swan",
+    "text": "Swan"
+  },
+  {
+    "category_id": 264,
+    "original_text": "Helicopter",
+    "text": "Helicopter"
+  },
+  {
+    "category_id": 265,
+    "original_text": "Green Onion",
+    "text": "Green Onion"
+  },
+  {
+    "category_id": 266,
+    "original_text": "Sandwich",
+    "text": "Sandwich"
+  },
+  {
+    "category_id": 267,
+    "original_text": "Nuts",
+    "text": "Nuts"
+  },
+  {
+    "category_id": 268,
+    "original_text": "Speed Limit Sign",
+    "text": "Speed Limit Sign"
+  },
+  {
+    "category_id": 269,
+    "original_text": "Induction Cooker",
+    "text": "Induction Cooker"
+  },
+  {
+    "category_id": 270,
+    "original_text": "Broom",
+    "text": "Broom"
+  },
+  {
+    "category_id": 271,
+    "original_text": "Trombone",
+    "text": "Trombone"
+  },
+  {
+    "category_id": 272,
+    "original_text": "Plum",
+    "text": "Plum"
+  },
+  {
+    "category_id": 273,
+    "original_text": "Rickshaw",
+    "text": "Rickshaw"
+  },
+  {
+    "category_id": 274,
+    "original_text": "Goldfish",
+    "text": "Goldfish"
+  },
+  {
+    "category_id": 275,
+    "original_text": "Kiwi fruit",
+    "text": "Kiwi fruit"
+  },
+  {
+    "category_id": 276,
+    "original_text": "Router/modem",
+    "text": "Router/modem"
+  },
+  {
+    "category_id": 277,
+    "original_text": "Poker Card",
+    "text": "Poker Card"
+  },
+  {
+    "category_id": 278,
+    "original_text": "Toaster",
+    "text": "Toaster"
+  },
+  {
+    "category_id": 279,
+    "original_text": "Shrimp",
+    "text": "Shrimp"
+  },
+  {
+    "category_id": 280,
+    "original_text": "Sushi",
+    "text": "Sushi"
+  },
+  {
+    "category_id": 281,
+    "original_text": "Cheese",
+    "text": "Cheese"
+  },
+  {
+    "category_id": 282,
+    "original_text": "Notepaper",
+    "text": "Notepaper"
+  },
+  {
+    "category_id": 283,
+    "original_text": "Cherry",
+    "text": "Cherry"
+  },
+  {
+    "category_id": 284,
+    "original_text": "Pliers",
+    "text": "Pliers"
+  },
+  {
+    "category_id": 285,
+    "original_text": "CD",
+    "text": "CD"
+  },
+  {
+    "category_id": 286,
+    "original_text": "Pasta",
+    "text": "Pasta"
+  },
+  {
+    "category_id": 287,
+    "original_text": "Hammer",
+    "text": "Hammer"
+  },
+  {
+    "category_id": 288,
+    "original_text": "Cue",
+    "text": "Cue"
+  },
+  {
+    "category_id": 289,
+    "original_text": "Avocado",
+    "text": "Avocado"
+  },
+  {
+    "category_id": 290,
+    "original_text": "Hamimelon",
+    "text": "Hamimelon"
+  },
+  {
+    "category_id": 291,
+    "original_text": "Flask",
+    "text": "Flask"
+  },
+  {
+    "category_id": 292,
+    "original_text": "Mushroon",
+    "text": "Mushroon"
+  },
+  {
+    "category_id": 293,
+    "original_text": "Screwdriver",
+    "text": "Screwdriver"
+  },
+  {
+    "category_id": 294,
+    "original_text": "Soap",
+    "text": "Soap"
+  },
+  {
+    "category_id": 295,
+    "original_text": "Recorder",
+    "text": "Recorder"
+  },
+  {
+    "category_id": 296,
+    "original_text": "Bear",
+    "text": "Bear"
+  },
+  {
+    "category_id": 297,
+    "original_text": "Eggplant",
+    "text": "Eggplant"
+  },
+  {
+    "category_id": 298,
+    "original_text": "Board Eraser",
+    "text": "Board Eraser"
+  },
+  {
+    "category_id": 299,
+    "original_text": "Coconut",
+    "text": "Coconut"
+  },
+  {
+    "category_id": 300,
+    "original_text": "Tape Measur/ Ruler",
+    "text": "Tape Measur/ Ruler"
+  },
+  {
+    "category_id": 301,
+    "original_text": "Pig",
+    "text": "Pig"
+  },
+  {
+    "category_id": 302,
+    "original_text": "Showerhead",
+    "text": "Showerhead"
+  },
+  {
+    "category_id": 303,
+    "original_text": "Globe",
+    "text": "Globe"
+  },
+  {
+    "category_id": 304,
+    "original_text": "Chips",
+    "text": "Chips"
+  },
+  {
+    "category_id": 305,
+    "original_text": "Steak",
+    "text": "Steak"
+  },
+  {
+    "category_id": 306,
+    "original_text": "Crosswalk Sign",
+    "text": "Crosswalk Sign"
+  },
+  {
+    "category_id": 307,
+    "original_text": "Stapler",
+    "text": "Stapler"
+  },
+  {
+    "category_id": 308,
+    "original_text": "Campel",
+    "text": "Campel"
+  },
+  {
+    "category_id": 309,
+    "original_text": "Formula 1 ",
+    "text": "Formula 1"
+  },
+  {
+    "category_id": 310,
+    "original_text": "Pomegranate",
+    "text": "Pomegranate"
+  },
+  {
+    "category_id": 311,
+    "original_text": "Dishwasher",
+    "text": "Dishwasher"
+  },
+  {
+    "category_id": 312,
+    "original_text": "Crab",
+    "text": "Crab"
+  },
+  {
+    "category_id": 313,
+    "original_text": "Hoverboard",
+    "text": "Hoverboard"
+  },
+  {
+    "category_id": 314,
+    "original_text": "Meat ball",
+    "text": "Meat ball"
+  },
+  {
+    "category_id": 315,
+    "original_text": "Rice Cooker",
+    "text": "Rice Cooker"
+  },
+  {
+    "category_id": 316,
+    "original_text": "Tuba",
+    "text": "Tuba"
+  },
+  {
+    "category_id": 317,
+    "original_text": "Calculator",
+    "text": "Calculator"
+  },
+  {
+    "category_id": 318,
+    "original_text": "Papaya",
+    "text": "Papaya"
+  },
+  {
+    "category_id": 319,
+    "original_text": "Antelope",
+    "text": "Antelope"
+  },
+  {
+    "category_id": 320,
+    "original_text": "Parrot",
+    "text": "Parrot"
+  },
+  {
+    "category_id": 321,
+    "original_text": "Seal",
+    "text": "Seal"
+  },
+  {
+    "category_id": 322,
+    "original_text": "Buttefly",
+    "text": "Buttefly"
+  },
+  {
+    "category_id": 323,
+    "original_text": "Dumbbell",
+    "text": "Dumbbell"
+  },
+  {
+    "category_id": 324,
+    "original_text": "Donkey",
+    "text": "Donkey"
+  },
+  {
+    "category_id": 325,
+    "original_text": "Lion",
+    "text": "Lion"
+  },
+  {
+    "category_id": 326,
+    "original_text": "Urinal",
+    "text": "Urinal"
+  },
+  {
+    "category_id": 327,
+    "original_text": "Dolphin",
+    "text": "Dolphin"
+  },
+  {
+    "category_id": 328,
+    "original_text": "Electric Drill",
+    "text": "Electric Drill"
+  },
+  {
+    "category_id": 329,
+    "original_text": "Hair Dryer",
+    "text": "Hair Dryer"
+  },
+  {
+    "category_id": 330,
+    "original_text": "Egg tart",
+    "text": "Egg tart"
+  },
+  {
+    "category_id": 331,
+    "original_text": "Jellyfish",
+    "text": "Jellyfish"
+  },
+  {
+    "category_id": 332,
+    "original_text": "Treadmill",
+    "text": "Treadmill"
+  },
+  {
+    "category_id": 333,
+    "original_text": "Lighter",
+    "text": "Lighter"
+  },
+  {
+    "category_id": 334,
+    "original_text": "Grapefruit",
+    "text": "Grapefruit"
+  },
+  {
+    "category_id": 335,
+    "original_text": "Game board",
+    "text": "Game board"
+  },
+  {
+    "category_id": 336,
+    "original_text": "Mop",
+    "text": "Mop"
+  },
+  {
+    "category_id": 337,
+    "original_text": "Radish",
+    "text": "Radish"
+  },
+  {
+    "category_id": 338,
+    "original_text": "Baozi",
+    "text": "Baozi"
+  },
+  {
+    "category_id": 339,
+    "original_text": "Target",
+    "text": "Target"
+  },
+  {
+    "category_id": 340,
+    "original_text": "French",
+    "text": "French"
+  },
+  {
+    "category_id": 341,
+    "original_text": "Spring Rolls",
+    "text": "Spring Rolls"
+  },
+  {
+    "category_id": 342,
+    "original_text": "Monkey",
+    "text": "Monkey"
+  },
+  {
+    "category_id": 343,
+    "original_text": "Rabbit",
+    "text": "Rabbit"
+  },
+  {
+    "category_id": 344,
+    "original_text": "Pencil Case",
+    "text": "Pencil Case"
+  },
+  {
+    "category_id": 345,
+    "original_text": "Yak",
+    "text": "Yak"
+  },
+  {
+    "category_id": 346,
+    "original_text": "Red Cabbage",
+    "text": "Red Cabbage"
+  },
+  {
+    "category_id": 347,
+    "original_text": "Binoculars",
+    "text": "Binoculars"
+  },
+  {
+    "category_id": 348,
+    "original_text": "Asparagus",
+    "text": "Asparagus"
+  },
+  {
+    "category_id": 349,
+    "original_text": "Barbell",
+    "text": "Barbell"
+  },
+  {
+    "category_id": 350,
+    "original_text": "Scallop",
+    "text": "Scallop"
+  },
+  {
+    "category_id": 351,
+    "original_text": "Noddles",
+    "text": "Noddles"
+  },
+  {
+    "category_id": 352,
+    "original_text": "Comb",
+    "text": "Comb"
+  },
+  {
+    "category_id": 353,
+    "original_text": "Dumpling",
+    "text": "Dumpling"
+  },
+  {
+    "category_id": 354,
+    "original_text": "Oyster",
+    "text": "Oyster"
+  },
+  {
+    "category_id": 355,
+    "original_text": "Table Teniis paddle",
+    "text": "Table Teniis paddle"
+  },
+  {
+    "category_id": 356,
+    "original_text": "Cosmetics Brush/Eyeliner Pencil",
+    "text": "Cosmetics Brush/Eyeliner Pencil"
+  },
+  {
+    "category_id": 357,
+    "original_text": "Chainsaw",
+    "text": "Chainsaw"
+  },
+  {
+    "category_id": 358,
+    "original_text": "Eraser",
+    "text": "Eraser"
+  },
+  {
+    "category_id": 359,
+    "original_text": "Lobster",
+    "text": "Lobster"
+  },
+  {
+    "category_id": 360,
+    "original_text": "Durian",
+    "text": "Durian"
+  },
+  {
+    "category_id": 361,
+    "original_text": "Okra",
+    "text": "Okra"
+  },
+  {
+    "category_id": 362,
+    "original_text": "Lipstick",
+    "text": "Lipstick"
+  },
+  {
+    "category_id": 363,
+    "original_text": "Cosmetics Mirror",
+    "text": "Cosmetics Mirror"
+  },
+  {
+    "category_id": 364,
+    "original_text": "Curling",
+    "text": "Curling"
+  },
+  {
+    "category_id": 365,
+    "original_text": "Table Tennis ",
+    "text": "Table Tennis"
+  }
+]
