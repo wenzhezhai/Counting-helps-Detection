@@ -14,14 +14,14 @@ All completed rows use all 5,000 validation images, the original 80 categories, 
 
 | Detector | Matching released AP | Reproduced AP | Input | Execution |
 | --- | ---: | ---: | --- | --- |
-| DINOv3 + Plain-DETR | 65.6 | Pending | Short edge 2048 | Complete backbone and head verified on compute host, native-resolution CUDA profile starting |
+| DINOv3 + Plain-DETR | 65.4 | Pending | Short edge 1536 | Full COCO inference active, native first-image parity verified |
 | Group DETR v2, released Paddle checkpoint | 63.3 | **63.30** | Short edge 1184, max 2000 | Complete |
 | TinyFormer-XL-PBM | 62.5 | **62.48** | 640 × 640 | Complete |
 | RF-DETR-2XL | 60.1 | Deferred | 880 × 880 | Deferred by the user pending the applicable platform license |
 | GTR-X | 59.4 | **59.38** | 640 × 640 | Complete |
 | D-FINE-X | 59.3 | **59.31** | 640 × 640 | Fresh full run complete |
 
-The four completed scores agree with their corresponding released values after rounding. Group DETR uses the released single-scale COCO validation reference. Its paper also describes other datasets and test-time settings.
+The four completed scores agree with their corresponding released values after rounding. DINO uses the author-reported 1536-pixel setting with reference AP 65.4. Its 2048-pixel setting has reference 65.6 and exceeded the available RTX 4090 memory on the widest validation image. Group DETR uses the released single-scale COCO validation reference. Its paper also describes other datasets and test-time settings.
 
 ### Native Objects365 heads
 
@@ -32,31 +32,40 @@ Both detectors use the same frozen first 5,000 images of the original validation
 | GTR-X native Objects365 head | **52.65** | 66.11 | 57.55 | Complete |
 | D-FINE-X native Objects365 head | **46.57** | 58.53 | 50.83 | Fresh full run complete |
 
-The fresh GTR and Group COCO counting controls are complete below. TinyFormer and fresh D-FINE controls await their additional counter queries. Native GTR Objects365 has a separately frozen missing-query cohort. The public pipeline checks complete counter coverage before scoring.
+The fresh GTR, Group and D-FINE COCO controls and native D-FINE Objects365 controls are complete below. TinyFormer controls await additional counter queries. Native GTR Objects365 has a separately frozen missing-query cohort. The public pipeline checks complete counter coverage before scoring.
 
-[Full experiment scope and evidence](docs/results.md) · [model access and status](docs/model_access.md) · [Group DETR v2 setup](docs/group_detr_v2.md)
+[Full experiment scope and evidence](docs/results.md) · [model access and status](docs/model_access.md) · [Group DETR v2 setup](docs/group_detr_v2.md) · [DINOv3 setup](docs/dinov3.md)
 
 ## Counting-guidance results this round
 
-Both rows use all 5,000 COCO validation images and 80 original categories. Original, confidence and points retain identical candidates. Confidence and points support the same number of boxes per image and class.
+All COCO rows use the complete 5,000 validation images and 80 original categories. Original, confidence and points retain identical candidates. Confidence and points support the same number of boxes per image and class.
 
 | Detector | Original AP | Matched confidence AP | Counting-point AP | Points − confidence | Points − original |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | GTR-X | 59.3799 | 59.4140 | **59.6447** | +0.2307 | +0.2648 |
 | Group DETR v2 | **63.2999** | 63.1847 | 63.2427 | +0.0580 | −0.0572 |
+| D-FINE-X | 59.3090 | 59.4506 | **59.6730** | +0.2225 | +0.3641 |
 
-GTR improves over both baselines. Group improves over matched confidence, with original detector AP remaining higher. Its top-five matching gain and full AP change have different signs.
+The fresh native D-FINE Objects365 comparison uses the previously frozen 5,000-image panel and original 365-category evaluation scope.
+
+| Detector and data | Original AP | Matched confidence AP | Counting-point AP | Points − confidence | Points − original |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| D-FINE-X native Objects365 | 46.5741 | 46.8021 | **47.4097** | +0.6076 | +0.8355 |
+
+GTR improves over both baselines. Group improves over matched confidence, with original detector AP remaining higher. Its top-five matching gain and full AP change have different signs. Native D-FINE Objects365 improves over both baselines.
 
 | Detector | Originally correct top-five boxes | Correct boxes displaced | Original targets lost | Previously unmatched targets recovered | Net matched-target change |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| GTR-X | 23,631 | 276 | 239 | 369 | +130 |
-| Group DETR v2 | 24,330 | 305 | 275 | 294 | +19 |
+| GTR-X · COCO | 23,631 | 276 | 239 | 369 | +130 |
+| Group DETR v2 · COCO | 24,330 | 305 | 275 | 294 | +19 |
+| D-FINE-X · COCO | 23,580 | 251 | 219 | 350 | +131 |
+| D-FINE-X · Objects365 fixed panel | 43,609 | 338 | 261 | 570 | +309 |
 
 Displacement follows candidate identity. Target loss and recovery follow one-to-one target matching. The reports retain both. A proposed source-trained residual correction will test whether the AP benefit and correct-box preservation can improve together.
 
 ### Historical matched controls
 
-These D-FINE-X results come from the sealed historical experiment completed on 9 November 2026. The fresh predictions above have their own pending matched controls. Original, confidence and points use identical candidates within each dataset. The gain is relative to the matched confidence control.
+These D-FINE-X results come from the sealed historical experiment completed on 9 November 2026. Fresh D-FINE predictions have separate completed controls reported above. Original, confidence and points use identical candidates within each dataset. The gain is relative to the matched confidence control.
 
 | Evaluation | Original AP | Matched confidence AP | Counting-point AP | Gain |
 | --- | ---: | ---: | ---: | ---: |
@@ -102,6 +111,8 @@ python -m pip install -e .
 python -m unittest discover -s tests
 python scripts/run_detector.py --list-models
 ```
+
+DINOv3 uses the dedicated `scripts/run_dino.py` entry with its two verified checkpoint files. Its [setup page](docs/dinov3.md) records the official 1536 setting, strict mmap/meta loading and the parity-verified feature-storage policy.
 
 Each released detector and the counter use their own pinned upstream source and dependencies. GTR requires its supported FLA runtime. Group DETR v2 uses an isolated Paddle environment. See [model setup](docs/model_access.md) and `configs/models.json` for exact revisions and weight checksums.
 
