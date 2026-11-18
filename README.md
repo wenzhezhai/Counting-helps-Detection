@@ -14,14 +14,14 @@ All completed rows use all 5,000 validation images, the original 80 categories, 
 
 | Detector | Published AP | Reproduced AP | Input | Execution |
 | --- | ---: | ---: | --- | --- |
-| DINOv3 + Plain-DETR | 65.4 | Pending | Short edge 1536, BF16 runtime | Full COCO inference active, native first-image parity verified |
+| DINOv3 + Plain-DETR | 65.4 | **65.38** | Short edge 1536, BF16 runtime | Full 5,000-image inference and evaluation complete |
 | Group DETR v2, released Paddle checkpoint | 63.3 | **63.30** | Short edge 1184, max 2000 | Complete |
 | TinyFormer-XL-PBM | 62.5 | **62.48** | 640 × 640 | Complete |
 | RF-DETR-2XL | 60.1 | Deferred | 880 × 880 | Deferred by the user pending the applicable platform license |
 | GTR-X | 59.4 | **59.38** | 640 × 640 | Complete |
 | D-FINE-X | 59.3 | **59.31** | 640 × 640 | Fresh full run complete |
 
-The four completed scores agree with their corresponding released values after rounding. DINO uses the author-reported 1536-pixel setting with reference AP 65.4. Its 2048-pixel setting has reference 65.6 and exceeded the available RTX 4090 memory on the widest validation image. The current run records BF16 storage/autocast and PIL bilinear preprocessing. The cited paper leaves inference dtype and initial image interpolation unspecified. Group DETR uses the released single-scale COCO validation reference. Its paper also describes other datasets and test-time settings.
+The five completed scores agree with their corresponding released values after rounding. DINO uses the author-reported 1536-pixel setting with reference AP 65.4. Its 2048-pixel setting has reference 65.6 and exceeded the available RTX 4090 memory on the widest validation image. The current run records BF16 storage/autocast and PIL bilinear preprocessing. The cited paper leaves inference dtype and initial image interpolation unspecified. Group DETR uses the released single-scale COCO validation reference. Its paper also describes other datasets and test-time settings.
 
 ### Native Objects365 heads
 

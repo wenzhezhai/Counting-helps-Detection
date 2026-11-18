@@ -169,7 +169,25 @@
     "torch": "2.7.1+cu126",
     "torchvision": "0.22.1"
   },
-  "loader_status": "NORMAL_PUBLIC_NATIVE1536_ENTRY_VERIFIED_FULL_EVALUATION_RUNNING",
+  "loader_status": "VERIFIED_FULL_COCO5000_NATIVE1536_RAW_DETECTION",
   "paper_execution_precision": "UNSPECIFIED in the released detector entry and paper Appendix D.9",
-  "paper_initial_image_interpolation": "UNSPECIFIED in the cited detector paper section"
+  "paper_initial_image_interpolation": "UNSPECIFIED in the cited detector paper section",
+  "full_coco_validation_result": {
+    "images": 5000,
+    "categories": 80,
+    "AP": 65.37532620011595,
+    "AP50": 82.04021350665717,
+    "AP75": 72.14318564718812,
+    "native_rows": 7500000,
+    "eligible_rows": 7498300,
+    "ignored_rows": 1700,
+    "finite_nonpositive_eligible_boxes_retained": 6039,
+    "result_sha256": "d02839a60b3f0b1403be0048386bab8f5cb9d6044c8e3871ceb66dd9e678557f",
+    "producer_seal_sha256": "18ff18e13a8a3f207255941c9255289e7eb14bfd44a99afb58099854a32795b1",
+    "eligible_prediction_sha256": "d955947973108581cea752102b4fc02a14906b5bf9df5f6d6029b6f8327c2da3",
+    "evaluation_source_sha256": "c970a4f88a381e7f3848af8e01c5a9c05ccac7384616a3b16113fa270bb7099b",
+    "short_edge": 1536,
+    "reference_AP": 65.4,
+    "peak_process_rss_bytes": 17845972992
+  }
 }

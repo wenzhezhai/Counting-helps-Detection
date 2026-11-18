@@ -6,6 +6,7 @@ The following raw detector runs completed on 17–18 November 2026. COCO uses al
 
 | Dataset | Detector | AP | AP50 | AP75 |
 | --- | --- | ---: | ---: | ---: |
+| COCO val2017 | DINOv3 + Plain-DETR, 1536 BF16 runtime | 65.37532620 | 82.04021351 | 72.14318565 |
 | COCO val2017 | Group DETR v2 released Paddle | 63.29988325 | 81.14385784 | 69.79891 |
 | COCO val2017 | TinyFormer-XL-PBM | 62.48417511 | 79.65635792 | 68.43765864 |
 | COCO val2017 | GTR-X | 59.37986094 | 77.32193595 | 64.67229937 |
@@ -13,7 +14,7 @@ The following raw detector runs completed on 17–18 November 2026. COCO uses al
 | Objects365 fixed panel | GTR-X native Objects365 | 52.65319320 | 66.11301300 | 57.55272201 |
 | Objects365 fixed panel | D-FINE-X native Objects365 | 46.57414485 | 58.53046672 | 50.82714350 |
 
-Each run exports 300 native candidates per image. All 1,500,000 candidates remain in the evaluation stream. GTR COCO contains one finite negative-height box, and fresh D-FINE COCO contains eight finite bad-extent boxes. The scoring arms preserve these candidates consistently. Group DETR, TinyFormer and the fresh native Objects365 exports have valid extents throughout.
+Group, TinyFormer, GTR and D-FINE each export 300 native candidates per image. Their 1,500,000 candidates remain in each evaluation stream. DINO exports all 1,500 native rows per image. Its 7,500,000 native rows partition into 7,498,300 eligible COCO candidates and 1,700 unused-slot rows. All 6,039 finite nonpositive-extent eligible DINO boxes remain in stock evaluation. GTR COCO contains one finite negative-height box, and fresh D-FINE COCO contains eight finite bad-extent boxes. The scoring arms preserve these candidates consistently. Group DETR, TinyFormer and the fresh native Objects365 exports have valid extents throughout.
 
 | Native prediction stream | SHA-256 |
 | --- | --- |
@@ -24,6 +25,23 @@ Each run exports 300 native candidates per image. All 1,500,000 candidates remai
 | Fresh native D-FINE Objects365 | `c38af5c4c45f2bf61fe89bd15108cdbbe511821c304fa0dc0c55e55d78ee1fcf` |
 
 The released Group DETR checkpoint's matching single-scale COCO validation reference is 63.3. Its full result, strict 767-tensor load and native high-resolution CUDA setting are documented in [Group setup](group_detr_v2.md). TinyFormer uses the full released EMA checkpoint, native FP32 preprocessing and its pinned source revision. Each completed COCO score agrees with its matching released score after rounding.
+
+## Full DINOv3 + Plain-DETR reproduction
+
+Completed on 18 November 2026 using all 5,000 COCO val2017 images, all 80 categories and stock maxDets 100. AP is **65.37532620011595**, AP50 **82.04021350665717** and AP75 **72.14318564718812**. The matching 1536-pixel paper reference is 65.4. The actual runtime uses BF16 parameter storage/autocast and PIL bilinear initial resizing. The paper leaves inference precision and initial interpolation unspecified. [Source and complete setup](dinov3.md)
+
+The predeclared 1536 setting followed a physical-memory failure on the widest 2048 input before DINO AP was read. The complete raw evaluation retained every eligible native candidate and measured 17,845,972,992 bytes peak process RSS. The full result supersedes the separately declared pilot for the main report.
+
+| Full-scope artifact | SHA-256 |
+| --- | --- |
+| Raw AP report | `d02839a60b3f0b1403be0048386bab8f5cb9d6044c8e3871ceb66dd9e678557f` |
+| GT-free producer seal | `18ff18e13a8a3f207255941c9255289e7eb14bfd44a99afb58099854a32795b1` |
+| All native predictions | `7dd6f09c7d5e62f0a9bae72d386a592c20bde36dcd10e946d14eeb77d37f0b00` |
+| Eligible COCO predictions | `d955947973108581cea752102b4fc02a14906b5bf9df5f6d6029b6f8327c2da3` |
+| Ignored native slots | `faeb27ab2a902ac05560db395eb6fd12370c747ad27abd7914478c5733508644` |
+| Complete required counter-query set | `611d35bc9d26eb147b6874a3e999835d12a4d8fe2b4bf4de0c1c7e8bb90b5f34` |
+
+Full DINO counting controls require 257,445 image/category queries. At preflight, sealed caches supplied 181,494 and 75,951 remained. Another 18,841 queries overlap the frozen TinyFormer acquisition and become reusable after its verified completion. The remaining full DINO cohort then requires 57,110 new predictions. These are coverage measurements before scoring the counting arms.
 
 ## Current matched counting controls
 
@@ -128,7 +146,7 @@ A complete native GeCo2 run used all 1,190 FSCD147 test images, released FSCD we
 ## Pending and deferred work
 
 - GTR, Group and fresh D-FINE COCO and native D-FINE Objects365 matched controls are complete. TinyFormer and native GTR Objects365 controls await their additional independent counter-query cohorts.
-- Both complete DINOv3 checkpoints are verified on the compute host. The backbone has 26,864,407,683 bytes with SHA-256 `a955f4ea3bec4fcd666bf363630da4386383069b482c8a927e17a3e1154965b7`. Strict meta architecture loading has passed. The original 2048 path passed a real-image forward. A parity-verified BF16 feature-storage remedy passed both pilot-wide geometries, and the widest full-panel image exceeded physical GPU memory. The predeclared official 1536 alternative now has priority, with its own reference of 65.4 AP. The 1536 configuration passed all four geometry probes and exact 1,500-prediction parity. Full COCO inference is active through the normal public entry. Its BF16 storage/autocast and PIL bilinear resizing are explicitly recorded. The paper inference dtype and initial image interpolation are unspecified, and the first-image parity baseline uses the same recorded mixed precision. A fixed ordered 500-image pilot was declared before DINO inference as an additional deadline-limited result. Its scope will accompany any reported pilot AP.
+- Full DINOv3 raw COCO reproduction is complete. Full counting controls follow verified TinyFormer query completion, preserving the full 257,445-query scope and native candidate pool. The priority is TinyFormer, DINO and then native GTR Objects365.
 - RF-DETR-2XL execution remains deferred at the user's request pending the applicable license.
 - Group DETR's released COCO checkpoint is fully reproduced. Availability of its exact native Objects365 head remains unresolved.
 - BMD-45 detector training stopped safely after 35 completed epochs at a user priority change. The resumable state remains archived. Counter adaptation and fresh-holdout evaluation remain pending.
