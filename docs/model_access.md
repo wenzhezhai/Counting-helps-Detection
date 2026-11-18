@@ -7,7 +7,7 @@ Status snapshot is 18 November 2026. Full scores and run evidence are in [result
 | GTR-X | [Official repository](https://github.com/Intellindust-AI-Lab/GTR) | Separate COCO and native Objects365 checkpoints, both complete fixed-panel reproductions |
 | D-FINE-X | [Official releases](https://github.com/Peterande/D-FINE/releases/tag/v1.0) | Separate `dfine_x_obj2coco.pth` and `dfine_x_obj365.pth` preserve their native heads |
 | TinyFormer-XL-PBM | [Author model zoo](https://github.com/mmpmmpmmpjosh/TinyFormer) | `TinyFormer-XL-pbm_obj2coco_24e.pth` is the Objects365-pretrained COCO detector, complete COCO reproduction |
-| DINOv3 + Plain-DETR | [Official access instructions](https://github.com/facebookresearch/dinov3#pretrained-heads---detector-trained-on-coco2017-dataset) | Approval supplies both the ViT-7B backbone and COCO detection head, complete local files awaiting server integration |
+| DINOv3 + Plain-DETR | [Official access instructions](https://github.com/facebookresearch/dinov3#pretrained-heads---detector-trained-on-coco2017-dataset) | Approval supplies both the ViT-7B backbone and COCO detection head, both complete files verified on compute host, native CUDA profiling starting |
 | Group DETR v2 | [Released Paddle model zoo](https://github.com/PaddlePaddle/PaddleDetection/tree/release/2.9/configs/group_detr) | Released COCO checkpoint verified, native Objects365-head availability remains unresolved |
 | RF-DETR-2XL | [Official model repository](https://github.com/roboflow/rf-detr) | Execution deferred by the user pending the platform license |
 

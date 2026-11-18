@@ -25,6 +25,34 @@ Each run exports 300 native candidates per image. All 1,500,000 candidates remai
 
 The released Group DETR checkpoint's matching single-scale COCO validation reference is 63.3. Its full result, strict 767-tensor load and native high-resolution CUDA setting are documented in [Group setup](group_detr_v2.md). TinyFormer uses the full released EMA checkpoint, native FP32 preprocessing and its pinned source revision. Each completed COCO score agrees with its matching released score after rounding.
 
+## Current matched counting controls
+
+Completed on 18 November 2026. The public entry points sealed a complete independent counter stream for 181,891 COCO image/category queries, generated three scoring arms for each detector and then read the evaluation annotations. Confidence and points support identical budgets on identical candidates.
+
+| Detector | Original AP | Confidence AP | Point AP | Point minus confidence | Point minus original |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| GTR-X | 59.37986094198712 | 59.41395727747628 | 59.644652270173424 | +0.23069499 | +0.26479133 |
+| Group DETR v2 | 63.29988324954671 | 63.18468808422115 | 63.242682150569394 | +0.05799407 | −0.05720110 |
+
+| Point arm | Correct candidate IDs displaced | Original matched targets lost | New targets recovered | Final top-five matched targets |
+| --- | ---: | ---: | ---: | ---: |
+| GTR-X | 276 | 239 | 369 | 23,761 |
+| Group DETR v2 | 305 | 275 | 294 | 24,349 |
+
+The original top-five matching denominators are 23,631 for GTR and 24,330 for Group. Matched confidence preserves those top-five identities. GTR improves over original AP and confidence. Group's original AP remains higher than its point arm, while the point arm exceeds confidence. The positive net Group target recovery is measured at IoU 0.50 in the per-image, per-class top five. Full AP integrates IoU thresholds 0.50–0.95 with maxDets 100.
+
+| Completed artifact | SHA-256 |
+| --- | --- |
+| Independent counter predictions | `778beaf7edd4161ebcc53745704a4890aa2abf6d63f68ddcf1b6e694d35025ed` |
+| Counter completion seal | `671bc683719208334faeca6b7fa517a68b847115eb518c041059df894d081e5b` |
+| GTR scoring-arm seal | `66e8292da17170ebb8acd7f32209ebb0f55ed18b7ef66272e62b92efde253edb` |
+| GTR paired AP and retention | `d62df199134ed1e0dd92e865eb86b1def303ef698e7311e44bfcbb68cdf9a39c` |
+| Group scoring-arm seal | `4fb3f8c51cade3c56852a3a5ef11c66db8dcea3f500b08132c93cf4f40e3edd1` |
+| Group paired AP and retention | `cfa14bb0181d8bb0db666d48d4c062041fddaa5df54149251b4aebf17b55b99f` |
+| Completed paired suite | `5f1fd451d6fc51e5c29ada4bc997e5663a25627a474d8def740fb19d9a6554fb` |
+
+All 45,789 new counter queries were acquired and durably saved. A CPU-only recovery reused the complete query cache with zero new predictions and sealed the final stream after an interrupted slow file merge. The preserved source journal has SHA-256 `ed01938c3af7fe7483f3b71c852e94696f924008d38635e08acd8e752cba5c24`. Recovery changed the output-writing stage while preserving acquired predictions.
+
 ## Scope of counting comparisons
 
 The current general-benchmark image panels have already been examined in earlier experiments. Input seals record zero image-ID and image-SHA overlap relative to a separate development panel. Training-image membership for the released Count Anything/CLOC checkpoint remains unverified because a weight-linked training image manifest is unavailable in the audited source. The counter runtime fingerprint establishes source and checkpoint identity. Fixed-cohort counting comparisons are reported with this provenance boundary.
@@ -54,7 +82,7 @@ The released model reports COCO AP 59.4. The local result agrees after rounding.
 | Canonical prediction derivative | `5e00535f2880600871a661de765743c2c6f1dcba97fb1c6dc45949cead0747c4` |
 | Raw AP completion record | `e24f4ab499e7b08f23cae614770cc545c2bdf209b4e63289cde854fc02950956` |
 
-The new model produces candidates in 154,139 image/category queries. The archived independent counter cache lacks 35,126 of these queries. Counting-guided comparison awaits explicit query completion.
+The model produces candidates in 154,139 image/category queries. The archived cache initially lacked 35,126 of these queries. The frozen combined GTR/Group acquisition and CPU reseal completed the required coverage. The full paired result appears above.
 
 ## Historical matched D-FINE-X controls
 
@@ -85,8 +113,8 @@ A complete native GeCo2 run used all 1,190 FSCD147 test images, released FSCD we
 
 ## Pending and deferred work
 
-- Counting controls for the newly reproduced detector candidates are filling missing independent image/category queries. AP, correct-candidate displacement and target loss/recovery follow the completed coverage seals.
-- DINOv3 head is verified on the server. The complete local backbone is transferring. Strict meta architecture loading has passed. Actual CUDA memory profiling precedes scientific inference. A fixed ordered 500-image pilot was declared before DINO inference as an additional deadline-limited result. Its scope will accompany any reported pilot AP.
+- GTR and Group COCO matched controls are complete. TinyFormer, fresh D-FINE and native GTR Objects365 controls await their additional independent counter-query cohorts.
+- Both complete DINOv3 checkpoints are verified on the compute host. The backbone has 26,864,407,683 bytes with SHA-256 `a955f4ea3bec4fcd666bf363630da4386383069b482c8a927e17a3e1154965b7`. Strict meta architecture loading has passed. Actual CUDA memory profiling precedes scientific inference. A fixed ordered 500-image pilot was declared before DINO inference as an additional deadline-limited result. Its scope will accompany any reported pilot AP.
 - RF-DETR-2XL execution remains deferred at the user's request pending the applicable license.
 - Group DETR's released COCO checkpoint is fully reproduced. Availability of its exact native Objects365 head remains unresolved.
 - BMD-45 detector training stopped safely after 35 completed epochs at a user priority change. The resumable state remains archived. Counter adaptation and fresh-holdout evaluation remain pending.

@@ -92,7 +92,7 @@ On 18 November 2026, the native CUDA export completed all 5,000 COCO val2017 ima
 
 The experiment used the previously evaluated fixed COCO benchmark. Its scope is released-detector reproduction on this fixed benchmark. The original COCO ground-truth SHA-256 was checked against its prior sealed value, `e8c7f7908f1d7278341fae127d0da654f102f11bd7b21d8aeefa635b8c810b6f`. The native prediction stream SHA-256 is `e4e34025f016785235b20ddf94f593a502549f859b955c17988d20e498d556ad`, and its frozen protocol SHA-256 is `dc6ffaf4ef7a8691357063bbed0d94ee6e0c06cb98362bf6ffccbdf1669b21e1`.
 
-This result verifies the original detector baseline. Matched confidence and counting-point results for this detector remain pending.
+The full matched comparison measured confidence AP 63.184688 and counting-point AP 63.242682. Points exceed confidence by 0.057994 AP. Original detector AP remains higher by 0.057201. Point rescoring displaces 305 originally correct top-five candidate IDs, loses 275 previously matched targets and recovers 294. The paired report SHA-256 is `cfa14bb0181d8bb0db666d48d4c062041fddaa5df54149251b4aebf17b55b99f`.
 
 ## Evaluation
 

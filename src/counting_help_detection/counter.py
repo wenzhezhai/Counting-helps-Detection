@@ -23,6 +23,7 @@ from collections import defaultdict
 from contextlib import nullcontext
 from datetime import datetime, timezone
 import copy
+import gc
 import json
 import math
 import os
@@ -30,6 +31,7 @@ from pathlib import Path
 import subprocess
 import sys
 import time
+import uuid
 
 from .rerank import file_sha256, load_images, load_vocabulary
 
@@ -46,11 +48,12 @@ def _dump(path, value):
         os.fsync(stream.fileno())
 
 
-def _write_row(stream, row):
+def _write_row(stream, row, durable=True):
     stream.write(json.dumps(row, ensure_ascii=False, allow_nan=False,
                             separators=(",", ":")) + "\n")
-    stream.flush()
-    os.fsync(stream.fileno())
+    if durable:
+        stream.flush()
+        os.fsync(stream.fileno())
 
 
 def _records(path):
@@ -373,9 +376,37 @@ def run_counter(source, checkpoint, config_path, images_path, vocabulary_path,
                 print(json.dumps(dict(completed_new_queries=index + 1, total_new_queries=len(missing),
                                       image_id=image_id, category_id=category_id,
                                       seconds=time.monotonic() - started)), flush=True)
-        with (out / "predictions.jsonl").open("x", encoding="utf-8") as stream:
+        gpu_metrics = {}
+        if model is not None:
+            if model.device.type == "cuda":
+                torch = model.torch
+                device_index = model.device
+                torch.cuda.synchronize(device_index)
+                gpu_metrics = dict(peak_gpu_reserved_bytes=torch.cuda.max_memory_reserved(device_index),
+                                   peak_gpu_allocated_bytes=torch.cuda.max_memory_allocated(device_index))
+            del model
+            model = None
+            gc.collect()
+            if gpu_metrics:
+                torch.cuda.empty_cache()
+                gpu_metrics["gpu_allocated_after_model_release_bytes"] = torch.cuda.memory_allocated(device_index)
+        _dump(out / "MODEL_RELEASED_BEFORE_MERGE.json", dict(
+              status="INFERENCE_COMPLETE_MODEL_RELEASED_BEFORE_CPU_MERGE", **gpu_metrics))
+        pending = out / ("predictions." + uuid.uuid4().hex + ".partial")
+        final = out / "predictions.jsonl"
+        with pending.open("x", encoding="utf-8") as stream:
             for key in queries:
-                _write_row(stream, cached[key])
+                _write_row(stream, cached[key], durable=False)
+            stream.flush()
+            os.fsync(stream.fileno())
+        if final.exists():
+            raise FileExistsError("Merged output already exists; preserved")
+        pending.rename(final)
+        directory_fd = os.open(out, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0))
+        try:
+            os.fsync(directory_fd)
+        finally:
+            os.close(directory_fd)
         if any(file_sha256(path) != input_hashes[name] for name, path in inputs.items()):
             raise RuntimeError("An inference input changed during prediction")
         for relative, digest in assets["source_sha256"].items():
@@ -389,9 +420,7 @@ def run_counter(source, checkpoint, config_path, images_path, vocabulary_path,
                       new_predictions_sha256=file_sha256(out / "new_predictions.jsonl"),
                       record_sha256=file_sha256(out / "run-record.json"),
                       finished_utc=datetime.now(timezone.utc).isoformat())
-        if model is not None and model.device.type == "cuda":
-            result["peak_gpu_reserved_bytes"] = model.torch.cuda.max_memory_reserved(model.device)
-            result["peak_gpu_allocated_bytes"] = model.torch.cuda.max_memory_allocated(model.device)
+        result.update(gpu_metrics)
         _dump(out / "GT_FREE_COMPLETE.json", result)
         return result
     except Exception as error:
