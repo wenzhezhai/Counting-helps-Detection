@@ -15,8 +15,8 @@ def main() -> None:
     parser.add_argument("--gt", type=Path, required=True, help="Original COCO ground-truth JSON")
     parser.add_argument("--manifest", type=Path, required=True, help="Frozen image-only JSON manifest")
     parser.add_argument("--original", type=Path, required=True, help="Native flat prediction JSONL")
-    parser.add_argument("--arm", action="append", required=True, metavar="NAME=FILE",
-                        help="Reranked flat prediction JSONL, repeat for each arm")
+    parser.add_argument("--arm", action="append", default=[], metavar="NAME=FILE",
+                        help="Optional reranked flat prediction JSONL; omit for original-only AP, or repeat for paired arms")
     parser.add_argument("--control-arm", help="Arm used for the AP difference against confidence")
     parser.add_argument("--gt-sha256", help="Optional ground-truth checksum fixed before scoring")
     parser.add_argument("--metadata", type=Path, action="append", default=[],

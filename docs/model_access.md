@@ -1,12 +1,12 @@
 # Model sources and execution status
 
-Status snapshot is 17 November 2026. Full scores and run evidence are in [results](results.md). Source and checkpoint hashes live in `configs/models.json`. Keep each upstream model in its own compatible environment.
+Status snapshot is 18 November 2026. Full scores and run evidence are in [results](results.md). Source and checkpoint hashes live in `configs/models.json`. Keep each upstream model in its own compatible environment.
 
 | Model | Public source | Checkpoint and current status |
 | --- | --- | --- |
-| GTR-X | [Official repository](https://github.com/Intellindust-AI-Lab/GTR) | Released COCO checkpoint, complete local reproduction |
+| GTR-X | [Official repository](https://github.com/Intellindust-AI-Lab/GTR) | Separate COCO and native Objects365 checkpoints, both complete fixed-panel reproductions |
 | D-FINE-X | [Official releases](https://github.com/Peterande/D-FINE/releases/tag/v1.0) | Separate `dfine_x_obj2coco.pth` and `dfine_x_obj365.pth` preserve their native heads |
-| TinyFormer-XL-PBM | [Author model zoo](https://github.com/mmpmmpmmpjosh/TinyFormer) | `TinyFormer-XL-pbm_obj2coco_24e.pth` is the Objects365-pretrained COCO detector |
+| TinyFormer-XL-PBM | [Author model zoo](https://github.com/mmpmmpmmpjosh/TinyFormer) | `TinyFormer-XL-pbm_obj2coco_24e.pth` is the Objects365-pretrained COCO detector, complete COCO reproduction |
 | DINOv3 + Plain-DETR | [Official access instructions](https://github.com/facebookresearch/dinov3#pretrained-heads---detector-trained-on-coco2017-dataset) | Approval supplies both the ViT-7B backbone and COCO detection head, complete local files awaiting server integration |
 | Group DETR v2 | [Released Paddle model zoo](https://github.com/PaddlePaddle/PaddleDetection/tree/release/2.9/configs/group_detr) | Released COCO checkpoint verified, native Objects365-head availability remains unresolved |
 | RF-DETR-2XL | [Official model repository](https://github.com/roboflow/rf-detr) | Execution deferred by the user pending the platform license |
@@ -24,9 +24,9 @@ The head in the approval email uses `coco_detr_head`. Current source builds a `c
 
 ## Verified runtimes
 
-- GTR inference uses PyTorch 2.7.1+cu126 and flash-linear-attention / fla-core 0.5.0 in an isolated dependency layer. The full raw run uses batch one, FP32, official 640-pixel preprocessing and the released EMA weights.
+- GTR inference uses PyTorch 2.7.1+cu126 and flash-linear-attention / fla-core 0.5.0 in an isolated dependency layer. The complete COCO and native Objects365 runs use batch one, FP32, official 640-pixel preprocessing and the released EMA weights.
 - D-FINE uses its pinned source and the matching native configuration. COCO and Objects365 require separate class heads and original category mapping.
-- Group DETR v2 CPU verification uses Python 3.12, PaddlePaddle 3.3.1, NumPy 1.26.4 and OpenCV 4.11.0.86. See [Group setup](group_detr_v2.md) for exact loading and eager compatibility.
+- Group DETR v2 completed native CUDA FP32 inference on all COCO validation images using Python 3.12, PaddlePaddle 3.3.1 with CUDA 11.8, NumPy 1.26.4 and OpenCV 4.11.0.86. See [Group setup](group_detr_v2.md) for exact loading and eager compatibility.
 - Count Anything uses the pinned native model and independent image/text path in `configs/counter.json`. Grounding inference uses the native BF16 autocast path while image/text inputs retain the frozen FP32 preprocessing.
 
 For upstream source trees, check out the exact commit in the model registry. The adapters verify the source revision and strict checkpoint loading. Frozen source archives can be accompanied by the wrapper's source receipt. Install upstream dependencies according to that pinned revision.
@@ -52,7 +52,20 @@ python scripts/run_detector.py \
   --output runs/dfine_objects365/detector
 ```
 
-The native classifier has 366 slots. Slot zero is unused and logged separately. The adapter preserves native category IDs 1–365.
+GTR's native Objects365 checkpoint has a separate tested entry.
+
+```bash
+python scripts/run_detector.py \
+  --model gtr-x-objects365 \
+  --source-dir ../detector-sources/GTR \
+  --checkpoint pretrained/gtr_x_obj365.pth \
+  --images configs/benchmarks/objects365_fixed5000/images.json \
+  --image-root data/objects365/images \
+  --device cuda:0 --threads 1 --gpu-memory-fraction 0.12 \
+  --output runs/gtr_objects365/detector
+```
+
+Both native classifiers have 366 slots. Slot zero is unused and logged separately. The adapters preserve native category IDs 1–365. The GTR entry uses the native postprocessor and its pinned FLA compatibility path. Its normal one-image CUDA command exactly matched the corresponding frozen full-run output in all 300 candidate labels, scores, coordinates and indices.
 
 ## GTR source and tested dependency installation
 

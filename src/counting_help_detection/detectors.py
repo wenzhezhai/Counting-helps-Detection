@@ -22,6 +22,19 @@ COCO_CATEGORY_IDS = (
     76, 77, 78, 79, 80, 81, 82, 84, 85, 86, 87, 88, 89, 90,
 )
 
+LABEL_SPACES = {"coco_contiguous_0_based", "dataset_native_category_id"}
+
+
+def detector_label_space(spec: dict[str, Any]) -> str:
+    """Keep dataset category semantics independent of tensor output format."""
+    value = spec.get("label_space")
+    if value is None:
+        value = ("coco_contiguous_0_based" if spec["postprocessor"] == "deploy"
+                 else "dataset_native_category_id")
+    if value not in LABEL_SPACES:
+        raise ValueError("The model registry names an unsupported label space.")
+    return value
+
 
 def file_sha256(path: Path) -> str:
     with path.open("rb") as stream:
@@ -148,6 +161,7 @@ class OfficialDetector:
         self.options = options
         spec = options.registry
         self.spec = spec
+        self.label_space = detector_label_space(spec)
         if options.threads < 1:
             raise ValueError("CPU thread count must be positive.")
         if spec.get("requires_cuda") and not options.device.startswith("cuda"):
@@ -252,6 +266,7 @@ class OfficialDetector:
             "input_size": list(self.input_size),
             "normalization": self.spec["normalization"],
             "native_pool": self.native_pool,
+            "label_space": self.label_space,
             "cpu_threads": self.options.threads,
             "gpu_memory_fraction": self.options.gpu_memory_fraction,
             "torch_version": self.torch.__version__,
@@ -280,7 +295,7 @@ class OfficialDetector:
         }
         return canonical_predictions(
             image_id, labels, boxes, scores,
-            contiguous_labels=self.spec["postprocessor"] == "deploy",
+            contiguous_labels=self.label_space == "coco_contiguous_0_based",
             pool_cap=pool_cap,
             category_ids=tuple(self.spec.get("category_ids", COCO_CATEGORY_IDS)),
             ignored_labels=tuple(self.spec.get("ignored_labels", ())),

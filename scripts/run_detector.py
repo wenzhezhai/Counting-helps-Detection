@@ -211,7 +211,7 @@ def main():
             parser.error("Missing --" + field.replace("_", "-"))
     if args.device == "cpu":
         os.environ["CUDA_VISIBLE_DEVICES"] = ""
-    if args.model == "gtr-x":
+    if args.model in {"gtr-x", "gtr-x-objects365"}:
         os.environ["GTR_DISABLE_CUDA_GLA"] = "1"
     run(args, models[args.model])
 

@@ -24,16 +24,17 @@ Install [PaddleDetection's runtime dependencies](https://github.com/PaddlePaddle
 After obtaining the pinned upstream source and full checkpoint above, export the native candidates with:
 
 ```bash
+FLAGS_gpu_memory_limit_mb=22528 FLAGS_allocator_strategy=auto_growth \
 python scripts/run_group_detr.py \
   --source-dir /path/to/PaddleDetection \
   --checkpoint /path/to/group_dino_vit_huge_4scale_1x_coco.pdparams \
   --images /path/to/images_gt_free.json \
   --image-root /path/to/coco/val2017 \
   --output /path/to/new-group-output \
-  --device cpu --threads 1
+  --device cuda:0 --threads 1 --gpu-memory-fraction 0.9
 ```
 
-Use a fresh process and a new output directory. `--resume` verifies the frozen protocol and image hashes before reusing completed chunks. The runner rejects a different Git revision when present and verifies the complete executable source manifest even for an archive extraction. It verifies the released config and checkpoint, checks all 767 loaded state tensors, uses the native OpenCV image decoder and test reader, and seals the complete candidate stream before evaluation. It retains finite native boxes even when their extents are nonpositive. No ground-truth file is an inference argument.
+Use a fresh process and a new output directory. The full run used the GPU alone while other GPU experiments retained their saved progress. For a small CPU check, use a single-image manifest and `--device cpu` without a GPU memory fraction. `--resume` verifies the frozen protocol and image hashes before reusing completed chunks. The runner rejects a different Git revision when present and verifies the complete executable source manifest even for an archive extraction. It verifies the released config and checkpoint, checks all 767 loaded state tensors, uses the native OpenCV image decoder and test reader, and seals the complete candidate stream before evaluation. It retains finite native boxes even when their extents are nonpositive. No ground-truth file is an inference argument.
 
 The default exports all 300 native candidates. `--pool-cap` explicitly defines a smaller diagnostic pool and must be kept identical across all reranking arms. For a compatible CUDA environment, select `--device cuda:0`; `--gpu-memory-fraction` sets Paddle's allocator fraction before import. Record additional allocator limits in the run environment and verify actual memory use before a full run. The GPU adapter releases idle allocator cache after the verified checkpoint load and before each image, and records this policy in the frozen protocol. This changes memory reuse only.
 
@@ -75,7 +76,15 @@ The validated CPU environment used Python 3.12, PaddlePaddle 3.3.1, NumPy 1.26.4
 
 The public `run_group_detr.py` entry also completed real-image CUDA 11.8 runs in FP32 on an RTX 4090 with PaddlePaddle GPU 3.3.1. It passed the complete source fingerprint and strict 767-tensor load checks, emitted 300 native candidates, and sealed the outputs before reading ground truth. A square image resized to `1184 × 1184` used peak allocated memory of 8.00 GiB and reserved memory of 10.97 GiB under a 12 GiB allocator limit.
 
-An image selected solely for the largest transformed pixel area in the frozen manifest resized to `1184 × 1999`. It failed a 16 GiB limit even after releasing idle loading cache: 12.84 GiB was active when another 5.02 GiB was requested. It then passed in a separate process under a 22 GiB limit, with peak allocated memory of 17.86 GiB and reserved memory of 18.66 GiB. Forward and chunk writing took about 1.17 seconds. The full native COCO 5,000-image run has started in isolation; full fixed-list AP and counting-guided comparisons remain pending. CPU fallback and native CUDA outputs can reorder low-scoring candidates, so the production CUDA export defines the frozen candidate identities.
+An image selected solely for the largest transformed pixel area in the frozen manifest resized to `1184 × 1999`. It failed a 16 GiB limit even after releasing idle loading cache: 12.84 GiB was active when another 5.02 GiB was requested. It then passed in a separate process under a 22 GiB limit, with peak allocated memory of 17.86 GiB and reserved memory of 18.66 GiB. Forward and chunk writing took about 1.17 seconds. CPU fallback and native CUDA outputs can reorder low-scoring candidates, so the production CUDA export defines the frozen candidate identities.
+
+## Completed full COCO result
+
+On 18 November 2026, the native CUDA export completed all 5,000 COCO val2017 images and sealed 1,500,000 candidates before opening ground-truth annotations. Stock COCO box evaluation over the original 80 classes with `maxDets=100` measured **63.299883 AP**, displayed as **63.30 AP**, matching the released checkpoint's reported 63.3 AP.
+
+The experiment used the previously evaluated fixed COCO benchmark. It makes no new blind-test or unseen-training claim. The original COCO ground-truth SHA-256 was checked against its prior sealed value, `e8c7f7908f1d7278341fae127d0da654f102f11bd7b21d8aeefa635b8c810b6f`. The native prediction stream SHA-256 is `e4e34025f016785235b20ddf94f593a502549f859b955c17988d20e498d556ad`, and its frozen protocol SHA-256 is `dc6ffaf4ef7a8691357063bbed0d94ee6e0c06cb98362bf6ffccbdf1669b21e1`.
+
+This result verifies the original detector baseline. Matched confidence and counting-point results for this detector remain pending.
 
 ## Evaluation
 

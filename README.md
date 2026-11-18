@@ -8,23 +8,37 @@ This repository contains the experiment pipeline for reproducing released detect
 
 AP is COCO box AP at IoU 0.50–0.95 on a 0–100 scale. Each score keeps its dataset, checkpoint and evaluation scope attached.
 
-| Model | Evaluation | Reported AP | Reproduced AP | Verification |
-| --- | --- | ---: | ---: | --- |
-| GTR-X | COCO val2017, all 5,000 images, 80 classes | 59.4 | **59.38** | Full inference and stock evaluation complete on 17 November 2026 |
-| D-FINE-X | COCO val2017, all 5,000 images, 80 classes | 59.3 | **59.31** | Archived full run, source and result checksums rechecked |
-| D-FINE-X native Objects365 head | Fixed first 5,000 original validation images, 365 classes | — | **46.57** | Archived full run, fresh released-weight CPU entry verified, full rerun queued |
-| Group DETR v2 released Paddle checkpoint | COCO val2017 | 63.3 | Pending | Strict CPU and native GPU forward verified, full COCO run active |
-| TinyFormer-XL-PBM | COCO val2017 | 62.5 | Pending | Strict full-checkpoint CPU forward verified, full GPU run queued |
-| DINOv3 + Plain-DETR | COCO val2017, shortest edge 2048 | 65.6 | Pending | Head verified on server, complete backbone transferring |
-| RF-DETR-2XL | COCO val2017, 880 pixels | 60.1 | Deferred | User deferred execution pending the applicable platform license |
+### COCO val2017
 
-The GTR run retained all 300 native candidates per image, including one finite box with negative height. Its sealed native prediction stream has SHA-256 `88c80bbec96d39f6a2aeb597c2e6af2b235f82bea90ccf2a682ab05955cd060d`. The reported AP rounds to the author's value. Counting-point controls are pending explicit completion of missing counter queries.
+All completed rows use all 5,000 validation images, the original 80 categories, native released candidates and standard `maxDets=100` evaluation. This reproduction round completed on 17–18 November 2026.
+
+| Detector | Matching released AP | Reproduced AP | Input | Execution |
+| --- | ---: | ---: | --- | --- |
+| DINOv3 + Plain-DETR | 65.6 | Pending | Short edge 2048 | Complete local backbone and head verified, backbone transferring to compute host |
+| Group DETR v2, released Paddle checkpoint | 63.3 | **63.30** | Short edge 1184, max 2000 | Complete |
+| TinyFormer-XL-PBM | 62.5 | **62.48** | 640 × 640 | Complete |
+| RF-DETR-2XL | 60.1 | Deferred | 880 × 880 | Deferred by the user pending the applicable platform license |
+| GTR-X | 59.4 | **59.38** | 640 × 640 | Complete |
+| D-FINE-X | 59.3 | **59.31** | 640 × 640 | Fresh full run complete |
+
+The four completed scores agree with their corresponding released values after rounding. Group DETR uses the released single-scale COCO validation reference. Its paper also describes other datasets and test-time settings.
+
+### Native Objects365 heads
+
+Both detectors use the same frozen first 5,000 images of the original validation panel, with original category IDs. All 365 categories enter evaluation, and 362 have non-crowd targets in this panel. These are fixed-subset reproduction scores.
+
+| Detector | Reproduced AP | AP50 | AP75 | Execution |
+| --- | ---: | ---: | ---: | --- |
+| GTR-X native Objects365 head | **52.65** | 66.11 | 57.55 | Complete |
+| D-FINE-X native Objects365 head | **46.57** | 58.53 | 50.83 | Fresh full run complete |
+
+Counting-point and same-budget confidence controls for the new sealed predictions await explicit completion of every required counter query. Existing missing queries produce a coverage failure in the public pipeline.
 
 [Full experiment scope and evidence](docs/results.md) · [model access and status](docs/model_access.md) · [Group DETR v2 setup](docs/group_detr_v2.md)
 
 ## Counting-guidance results
 
-These D-FINE-X results come from the sealed historical experiment completed on 9 November 2026. Original, confidence and points use identical candidates within each dataset. The gain is relative to the matched confidence control.
+These D-FINE-X results come from the sealed historical experiment completed on 9 November 2026. The fresh predictions above have their own pending matched controls. Original, confidence and points use identical candidates within each dataset. The gain is relative to the matched confidence control.
 
 | Evaluation | Original AP | Matched confidence AP | Counting-point AP | Gain |
 | --- | ---: | ---: | ---: | ---: |
@@ -33,6 +47,8 @@ These D-FINE-X results come from the sealed historical experiment completed on 9
 | BMD-45, previous 1,084-image holdout, car/bus/truck | 52.8852 | 53.3647 | **53.9103** | +0.5455 |
 
 Point guidance displaced 249 originally correct top-five candidates on COCO, 339 on Objects365 and 19 on BMD-45. The BMD-45 run recovered 38 previously unmatched targets and lost 16 previously matched targets. These diagnostics quantify the cost alongside the AP gain.
+
+The general-benchmark panels have been examined previously. Their documented zero overlap applies to a separate development panel. Training-image overlap with the released Count Anything checkpoint remains unverified. These results support fixed-cohort reproduction and transfer analysis.
 
 A separate BMD-45 adaptation study has a frozen fresh holdout. Detector training stopped at the user's priority change after 35 completed epochs, with a resumable checkpoint. Counter adaptation and fresh-holdout scores remain pending.
 
