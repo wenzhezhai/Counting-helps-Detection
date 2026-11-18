@@ -94,15 +94,21 @@ The exporter checks strict state loading, image dimensions, the source revision 
 
 ### 2. Run the independent counter
 
-Prepare `queries.json` with the image/category pairs required by the candidate stream. Existing independent counter caches can be supplied with repeated `--cache` arguments.
+Prepare the required image/category queries from the sealed candidate stream. The query file contains image and category IDs. The independent counter receives the image and class text. Existing independent counter caches can be supplied with repeated `--cache` arguments.
 
 ```bash
+python scripts/prepare_counter_queries.py \
+  --detector runs/gtr_coco/detector/predictions.jsonl \
+  --images configs/benchmarks/coco_val2017/images.json \
+  --vocabulary configs/benchmarks/coco_val2017/vocabulary.json \
+  --output runs/gtr_coco/queries.json
+
 python scripts/run_counter.py \
   --source ../counter-sources/count-anything \
   --checkpoint pretrained/count_anything.pt \
   --images configs/benchmarks/coco_val2017/images.json \
   --vocabulary configs/benchmarks/coco_val2017/vocabulary.json \
-  --queries data/coco/queries.json \
+  --queries runs/gtr_coco/queries.json \
   --image-root data/coco/val2017 \
   --out runs/gtr_coco/counter
 ```
