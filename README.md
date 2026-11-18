@@ -197,6 +197,8 @@ python scripts/evaluate_predictions.py \
 
 The evaluator reports pooled and class AP, displaced originally correct top-five candidate IDs, targets lost and targets recovered. Standard AP uses `maxDets=100`. The top-five diagnostic uses same-image, same-class greedy one-to-one matching at IoU ≥ 0.50. Full definitions appear in [the protocol](docs/protocol.md).
 
+For complete candidate pools such as DINO's 1,500 native rows per image, use `rerank_large_predictions.py` and `evaluate_large_predictions.py`. They index candidates on disk, run each complete stock-AP arm in a separate process and stream the top-five statistics. The scoring rule and evaluation definition are shared with the standard entries. [Complete DINO scoring commands](docs/dinov3.md#complete-pool-counting-controls)
+
 ## Repository contents
 
 ```text
@@ -211,7 +213,7 @@ docs/          Protocol, actual results, model access and Group DETR setup
 
 - Siméoni et al., *DINOv3*, TMLR, May 2026. [Paper](https://arxiv.org/abs/2508.10104), [official code and approved-weight access](https://github.com/facebookresearch/dinov3).
 - Hsieh et al., *TinyFormer*, arXiv, 24 May 2026. [Paper](https://arxiv.org/abs/2605.25046), [official code](https://github.com/mmpmmpmmpjosh/TinyFormer).
-- Roboflow et al., *RF-DETR*, ICLR, April 2026. [Paper](https://arxiv.org/abs/2511.09554), [official code](https://github.com/roboflow/rf-detr), [platform model license](https://github.com/roboflow/rf-detr_plus/blob/main/LICENSE).
+- Robinson et al., *RF-DETR*, ICLR, April 2026. [Paper](https://arxiv.org/abs/2511.09554), [official code](https://github.com/roboflow/rf-detr), [platform model license](https://github.com/roboflow/rf-detr_plus/blob/main/LICENSE).
 - Feng et al., *GTR*, arXiv, 22 September 2026. [Paper](https://arxiv.org/abs/2609.26590), [official code](https://github.com/Intellindust-AI-Lab/GTR).
 - Peng et al., *D-FINE*, ICLR, April 2025. [Paper](https://arxiv.org/abs/2410.13842), [official code](https://github.com/Peterande/D-FINE).
 - Chen et al., *Group DETR v2*, arXiv, November 2022. [Paper](https://arxiv.org/abs/2211.03594), [released Paddle implementation](https://github.com/PaddlePaddle/PaddleDetection/tree/release/2.9/configs/group_detr).

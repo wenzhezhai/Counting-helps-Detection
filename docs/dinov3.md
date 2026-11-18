@@ -78,4 +78,30 @@ Each `chunks/<12-digit-image-id>.json` stores the complete native records and th
 
 Evaluate `predictions.jsonl` only after its seal exists, using stock COCO evaluation with all 80 categories and `maxDets=100`. Prefix reports state their 500-image scope. The full validation report covers all 5,000 images and uses its matching paper reference. Counting-guidance experiments add a separately frozen point cache and matched controls.
 
+## Complete-pool counting controls
+
+After completing all required counter queries through the counter commands in the README, the disk-indexed entries retain every eligible candidate. They use the frozen scoring rule and stock COCO helper. Each stock-AP arm runs in its own fresh process, and correct-box retention is accumulated image by image. Choose new output and work directories for each evaluation.
+
+```bash
+python scripts/rerank_large_predictions.py \
+  --detector runs/dino_coco/detector/predictions.jsonl \
+  --counter runs/dino_coco/counter/predictions.jsonl \
+  --images configs/benchmarks/coco_val2017/images.json \
+  --vocabulary configs/benchmarks/coco_val2017/vocabulary.json \
+  --out runs/dino_coco/arms
+
+python scripts/evaluate_large_predictions.py \
+  --gt data/coco/instances_val2017.json \
+  --manifest configs/benchmarks/coco_val2017/images.json \
+  --original runs/dino_coco/arms/original.jsonl \
+  --arm confidence=runs/dino_coco/arms/confidence.jsonl \
+  --arm points=runs/dino_coco/arms/points.jsonl \
+  --control-arm confidence \
+  --metadata runs/dino_coco/arms/PREDICTIONS_SEALED_PRE_GT.json \
+  --output runs/dino_coco/results.json \
+  --work-dir runs/dino_coco/evaluation_work
+```
+
+Optional `--cpu-lock PATH` serializes competing CPU jobs. On Linux, `--min-free-memory-gib 24` waits for available system memory before starting. The appropriate admission threshold depends on the complete candidate count and measured process memory.
+
 Strict metadata, source and scope checks have passed. At 1536 pixels, all 1,500 native predictions and the BF16 projection input matched exactly on the predefined reference image, and all four geometry probes completed. The full normal-entry run uses an immutable snapshot of the same numerical materializer functions, storage helper, model, preprocessing and export logic. The portable entry only replaces the private-receipt requirement with the published verified-policy check and records any resource override. The full normal-entry run has started. Its first image matched all 1,500 predictions from the unmodified-window, same-mixed-precision baseline byte-for-byte, with SHA-256 `394e89709ea23e4491ee9fc132f6813eedadcc23e3a58c26bf333a2282d97e65`. The complete benchmark result is pending.
