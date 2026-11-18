@@ -1,0 +1,173 @@
+{
+  "recorded_utc": "2026-11-18T06:50:26.229376+00:00",
+  "reporting_cutoff_utc": "2026-11-18T10:00:00+00:00",
+  "scope": {
+    "COCO": "complete val2017,5000 images,80 categories",
+    "Objects365": "previously frozen first5000 original-validation images,365 requested categories,362 non-crowd-positive",
+    "panels_previously_examined": true,
+    "counter_training_image_overlap": "unverified"
+  },
+  "protocol": {
+    "AP": "stock COCO bbox AP50-95,0-100,maxDets100",
+    "top5": "same image and class,score descending/candidate index ascending,one-to-one IoU>=0.50",
+    "crowd_or_ignored_queries_excluded_from_top5": true,
+    "point_weight": 0.25,
+    "candidate_geometry_and_identity_fixed": true,
+    "confidence_and_points_have_identical_support_counts": true
+  },
+  "coco": [
+    {
+      "model": "DINOv3 + Plain-DETR",
+      "raw": {
+        "AP": 65.37532620011595,
+        "result_sha256": "d02839a60b3f0b1403be0048386bab8f5cb9d6044c8e3871ceb66dd9e678557f"
+      },
+      "released_reference_AP": 65.4,
+      "counting_controls": {
+        "status": "counter_acquisition_running"
+      }
+    },
+    {
+      "model": "Group DETR v2",
+      "raw": {
+        "AP": 63.29988324954671,
+        "result_sha256": "4ba382da40f25b28f5c07c8f7785cc7a9bb64ebf4d70fff8f16260e6f4abd1cf"
+      },
+      "released_reference_AP": 63.3,
+      "counting_controls": {
+        "status": "complete",
+        "raw_ap": 63.29988324954671,
+        "confidence_ap": 63.18468808422115,
+        "points_ap": 63.242682150569394,
+        "displaced": 305,
+        "lost": 275,
+        "recovered": 294,
+        "baseline_correct": 24330,
+        "result_sha256": "cfa14bb0181d8bb0db666d48d4c062041fddaa5df54149251b4aebf17b55b99f",
+        "AP_gain_vs_confidence": 0.05799406634824322,
+        "AP_gain_vs_original": -0.05720109897731618,
+        "final_matched_targets": 24349
+      }
+    },
+    {
+      "model": "TinyFormer-XL-PBM",
+      "raw": {
+        "AP": 62.484175107589415,
+        "result_sha256": "8b40b9da9da3f795ebe9d551bc0e1707ace41226bc0f5bb5dcf67e43fbc61d61"
+      },
+      "released_reference_AP": 62.5,
+      "counting_controls": {
+        "status": "complete",
+        "raw_ap": 62.484175107589415,
+        "confidence_ap": 62.50493864708171,
+        "points_ap": 62.56842832746897,
+        "displaced": 252,
+        "lost": 222,
+        "recovered": 277,
+        "baseline_correct": 24007,
+        "final_matched": 24062,
+        "result_sha256": "ec4af775af3db9d790affd2c2def3f736d0978cae86090677a5fff606ef4c40b",
+        "AP_gain_vs_confidence": 0.06348968038726355,
+        "AP_gain_vs_original": 0.0842532198795567,
+        "final_matched_targets": 24062
+      }
+    },
+    {
+      "model": "GTR-X",
+      "raw": {
+        "AP": 59.37986094198712,
+        "result_sha256": "e24f4ab499e7b08f23cae614770cc545c2bdf209b4e63289cde854fc02950956"
+      },
+      "released_reference_AP": 59.4,
+      "counting_controls": {
+        "status": "complete",
+        "raw_ap": 59.37986094198712,
+        "confidence_ap": 59.41395727747628,
+        "points_ap": 59.644652270173424,
+        "displaced": 276,
+        "lost": 239,
+        "recovered": 369,
+        "baseline_correct": 23631,
+        "result_sha256": "d62df199134ed1e0dd92e865eb86b1def303ef698e7311e44bfcbb68cdf9a39c",
+        "AP_gain_vs_confidence": 0.23069499269714555,
+        "AP_gain_vs_original": 0.26479132818630546,
+        "final_matched_targets": 23761
+      }
+    },
+    {
+      "model": "D-FINE-X",
+      "raw": {
+        "AP": 59.30895120949836,
+        "result_sha256": "584d41891145f4b768e49e2238bd0dd13f37569900e251a5b242934b2e72b0ec"
+      },
+      "released_reference_AP": 59.3,
+      "counting_controls": {
+        "status": "complete",
+        "raw_ap": 59.30895120949836,
+        "confidence_ap": 59.450555951244965,
+        "points_ap": 59.67300828452975,
+        "displaced": 251,
+        "lost": 219,
+        "recovered": 350,
+        "baseline_correct": 23580,
+        "result_sha256": "9e5d73ae3fc86832118f7c189c67f8ce3b451ab073fe80c7cb92f41022a2c47a",
+        "AP_gain_vs_confidence": 0.2224523332847852,
+        "AP_gain_vs_original": 0.36405707503138984,
+        "final_matched_targets": 23711
+      }
+    },
+    {
+      "model": "RF-DETR-2XL",
+      "status": "deferred_by_user_pending_license",
+      "released_reference_AP": 60.1
+    }
+  ],
+  "objects365": [
+    {
+      "model": "GTR-X",
+      "raw": {
+        "AP": 52.65319320242774,
+        "result_sha256": "490bd52378cef258409bcb68ec5e0ae5fdfff9e3d4d0f02cae61dbd7d6938f09"
+      },
+      "counting_controls": {
+        "status": "queued"
+      }
+    },
+    {
+      "model": "D-FINE-X",
+      "raw": {
+        "AP": 46.57414484785549,
+        "result_sha256": "dadd5e6080aef2daa919df6cac2193851a0998431aaddc83f8b7047442bcffa8"
+      },
+      "counting_controls": {
+        "status": "complete",
+        "raw_ap": 46.57414484785549,
+        "confidence_ap": 46.80211338148044,
+        "points_ap": 47.40967143382833,
+        "displaced": 338,
+        "lost": 261,
+        "recovered": 570,
+        "baseline_correct": 43609,
+        "result_sha256": "772bf0f52172ca3abc318d059386ee55471c05f1e4cf83b06453be92b75c0886",
+        "AP_gain_vs_confidence": 0.6075580523478905,
+        "AP_gain_vs_original": 0.8355265859728362,
+        "final_matched_targets": 43918
+      }
+    }
+  ],
+  "DINO_execution": {
+    "short_edge": 1536,
+    "linear_and_conv_parameter_storage": "BF16",
+    "whole_model_autocast": "BF16",
+    "initial_image_interpolation": "PIL bilinear",
+    "paper_inference_dtype": "unspecified",
+    "paper_initial_interpolation": "unspecified",
+    "native_rows": 7500000,
+    "eligible_rows": 7498300,
+    "ignored_rows": 1700,
+    "finite_nonpositive_eligible_boxes_retained": 6039,
+    "full_required_counter_queries": 257445,
+    "cached_counter_queries_at_preflight": 200335,
+    "missing_counter_queries_at_preflight": 57110
+  }
+}
