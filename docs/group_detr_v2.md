@@ -19,7 +19,15 @@ The full checkpoint contains the backbone and detection head. Loading this check
 
 ## Portable inference
 
-Install [PaddleDetection's runtime dependencies](https://github.com/PaddlePaddle/PaddleDetection/blob/b25522a0f4bde8c80603f3ba5e3472059972e3b5/requirements.txt) and the appropriate official PaddlePaddle build in a separate environment. This adapter imports Paddle lazily and does not modify the other detector environments. The verified CPU build is `paddlepaddle==3.3.1`. The separately verified GPU build is the official [Python 3.12, Linux x86-64, CUDA 11.8 wheel for PaddlePaddle GPU 3.3.1](https://paddle-whl.cdn.bcebos.com/stable/cu118/paddlepaddle-gpu/paddlepaddle_gpu-3.3.1-cp312-cp312-linux_x86_64.whl). GPU setup must include the CUDA libraries required by its exact wheel; this build declares version-pinned `nvidia-*-cu11` packages in its metadata. An installation with `--no-deps` requires installing those declared packages separately.
+Use a separate Python 3.12 environment with the tested inference dependencies in `configs/environments/paddle_group_inference.txt`. The adapter imports Paddle lazily. The verified CPU build is `paddlepaddle==3.3.1`. The full CUDA reproduction uses the official GPU build below. Installing this wheel with its declared dependencies provides the exact CUDA 11.8 library packages required by the wheel.
+
+```bash
+python -m pip install https://paddle-whl.cdn.bcebos.com/stable/cu118/paddlepaddle-gpu/paddlepaddle_gpu-3.3.1-cp312-cp312-linux_x86_64.whl
+python -m pip install -r configs/environments/paddle_group_inference.txt
+python -m pip install -e .
+```
+
+The pinned upstream repository also contains training and tracking dependencies. The recipe above records the tested inference environment, including the modules reached by PaddleDetection's eager import chain.
 
 After obtaining the pinned upstream source and full checkpoint above, export the native candidates with:
 
@@ -40,7 +48,7 @@ The default exports all 300 native candidates. `--pool-cap` explicitly defines a
 
 ## Inference settings
 
-Use the following overrides through `ppdet.core.workspace.merge_config` before constructing the model.
+For the CPU probe, the adapter applies the following overrides through `ppdet.core.workspace.merge_config` before constructing the model. CUDA runs set `use_gpu=True` and select the requested CUDA device.
 
 ```python
 overrides = {
@@ -82,7 +90,7 @@ An image selected solely for the largest transformed pixel area in the frozen ma
 
 On 18 November 2026, the native CUDA export completed all 5,000 COCO val2017 images and sealed 1,500,000 candidates before opening ground-truth annotations. Stock COCO box evaluation over the original 80 classes with `maxDets=100` measured **63.299883 AP**, displayed as **63.30 AP**, matching the released checkpoint's reported 63.3 AP.
 
-The experiment used the previously evaluated fixed COCO benchmark. It makes no new blind-test or unseen-training claim. The original COCO ground-truth SHA-256 was checked against its prior sealed value, `e8c7f7908f1d7278341fae127d0da654f102f11bd7b21d8aeefa635b8c810b6f`. The native prediction stream SHA-256 is `e4e34025f016785235b20ddf94f593a502549f859b955c17988d20e498d556ad`, and its frozen protocol SHA-256 is `dc6ffaf4ef7a8691357063bbed0d94ee6e0c06cb98362bf6ffccbdf1669b21e1`.
+The experiment used the previously evaluated fixed COCO benchmark. Its scope is released-detector reproduction on this fixed benchmark. The original COCO ground-truth SHA-256 was checked against its prior sealed value, `e8c7f7908f1d7278341fae127d0da654f102f11bd7b21d8aeefa635b8c810b6f`. The native prediction stream SHA-256 is `e4e34025f016785235b20ddf94f593a502549f859b955c17988d20e498d556ad`, and its frozen protocol SHA-256 is `dc6ffaf4ef7a8691357063bbed0d94ee6e0c06cb98362bf6ffccbdf1669b21e1`.
 
 This result verifies the original detector baseline. Matched confidence and counting-point results for this detector remain pending.
 

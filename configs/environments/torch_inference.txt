@@ -17,3 +17,5 @@ ninja==1.13.2
 huggingface-hub==1.32.0
 safetensors==0.8.0
 sympy==1.14.0
+opencv-python==4.11.0.86
+tensorboard==2.21.0

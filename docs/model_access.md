@@ -37,7 +37,7 @@ Signed approval URLs are personal, temporary download credentials. Keep these in
 
 - `configs/benchmarks/coco_val2017/images.json` contains all 5,000 COCO val2017 images in the frozen order. `vocabulary.json` contains the 80 native category IDs and text prompts.
 - `configs/benchmarks/objects365_fixed5000/images.json` contains the fixed 5,000-image original-validation panel with paths relative to the image root. Its vocabulary preserves all 365 categories.
-- Each `benchmark.json` records the original ground-truth, vocabulary and manifest checksums, plus the public sanitized image-manifest checksum. Download original images and annotations from their publishers and check the recorded hashes.
+- Each `benchmark.json` records our frozen evaluation-annotation, vocabulary and manifest checksums, plus the public sanitized image-manifest checksum. The Objects365 evaluation-annotation checksum identifies our archived fixed-panel JSON. The publisher supplies the complete original validation annotations. The evaluator can use that larger annotation file and selects the frozen image IDs, while recording the file actually supplied. Preserve the native category IDs and image metadata. An exact archived-subset checksum check applies when using that exact archived JSON.
 
 Native Objects365 inference uses its dedicated model registry entry.
 
@@ -78,7 +78,7 @@ python -m pip install torch==2.7.1 torchvision==0.22.1 --index-url https://downl
 python -m pip install -r configs/environments/torch_inference.txt
 ```
 
-The adapter sets `GTR_DISABLE_CUDA_GLA=1` and uses the verified FLA 0.5.0 path. The upstream reference environment uses a newer PyTorch/CUDA combination. The actual environment above produced the full AP in the results table. Keep the chosen environment with each run.
+The environment file includes OpenCV and TensorBoard because the pinned upstream imports require them. The adapter sets `GTR_DISABLE_CUDA_GLA=1` and uses the verified FLA 0.5.0 path. The upstream reference environment uses a newer PyTorch/CUDA combination. The actual environment above produced the full AP in the results table. Keep the chosen environment with each run.
 
 ## Tested counter dependencies
 

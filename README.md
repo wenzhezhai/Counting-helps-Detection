@@ -156,6 +156,16 @@ python scripts/evaluate_predictions.py \
   --output runs/gtr_coco/results.json
 ```
 
+For raw detector AP, the same evaluator accepts the sealed native stream directly.
+
+```bash
+python scripts/evaluate_predictions.py \
+  --gt data/coco/instances_val2017.json \
+  --manifest configs/benchmarks/coco_val2017/images.json \
+  --original runs/gtr_coco/detector/predictions.jsonl \
+  --output runs/gtr_coco/raw_results.json
+```
+
 The evaluator reports pooled and class AP, displaced originally correct top-five candidate IDs, targets lost and targets recovered. Standard AP uses `maxDets=100`. The top-five diagnostic uses same-image, same-class greedy one-to-one matching at IoU ≥ 0.50. Full definitions appear in [the protocol](docs/protocol.md).
 
 ## Repository contents
