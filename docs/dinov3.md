@@ -20,7 +20,7 @@ The executable source fingerprint and both complete weight checksums are recorde
 | `dinov3_vit7b16_pretrain_lvd1689m-a955f4ea.pth` | 26,864,407,683 | `a955f4ea3bec4fcd666bf363630da4386383069b482c8a927e17a3e1154965b7` |
 | `dinov3_vit7b16_coco_detr_head-b0235ff7.pth` | 1,549,231,874 | `b0235ff7ea0a037b521f58eb7915d3a022c75319e93307dd48dfc5fd85c6f031` |
 
-The feature-storage adapter retains the upstream copyright and license notices. The original window/backbone operations also credit their Plain-DETR, Deformable DETR, and DETR lineage. The separate materializer is an independent tensor-mapping adapter that invokes the unmodified upstream architecture.
+The feature-storage adapter retains the upstream copyright and license notices. The repository includes the [complete DINOv3 agreement](../third_party/notices/DINOv3-LICENSE.md) and [original source attributions](../third_party/notices/DINOv3-NOTICE.md). The original window/backbone operations also credit their Plain-DETR, Deformable DETR, and DETR lineage. The separate materializer is an independent tensor-mapping adapter that invokes the unmodified upstream architecture.
 
 ## Inference environment
 

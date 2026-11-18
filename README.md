@@ -219,3 +219,5 @@ docs/          Protocol, actual results, model access and Group DETR setup
 - ECDet / EdgeCrafter provides an additional recent-detector implementation check. [Official code](https://github.com/Intellindust-AI-Lab/EdgeCrafter), [paper](https://arxiv.org/abs/2603.18739).
 
 Upstream code and model weights retain their respective licenses and access conditions. Download them from their authors. This repository contains experiment adapters and evaluation code.
+
+The derived DINO feature-storage code is accompanied by the original agreement and source attributions. [DINOv3 agreement](third_party/notices/DINOv3-LICENSE.md), [source notices](third_party/notices/DINOv3-NOTICE.md)
