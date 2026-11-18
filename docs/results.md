@@ -119,6 +119,16 @@ The point arm displaced 338 originally correct top-five candidate IDs, lost 261 
 
 The fresh D-FINE COCO counter completed 187 new queries after reusing the sealed GTR/Group union and historical raw caches. Complete coverage is 158,641 required queries. Its counter prediction SHA-256 is `05faf9095b3f753a4fb819916ee38b9d024db510caa9051c11c260d64d34f4b6`, the scoring-arm seal is `48290f6613aad18b8296b92172a957bb99442b7f159ba8c9638fcd14ea86077d`, and the paired report is `9e5d73ae3fc86832118f7c189c67f8ce3b451ab073fe80c7cb92f41022a2c47a`.
 
+## Full native GTR Objects365 counting controls
+
+Completed on 18 November 2026 at 09:44:26 UTC. All 246,966 required counter queries are complete, comprising 182,548 reused predictions and 64,418 new queries. The same frozen 5,000 images and all 365 native categories enter evaluation, with non-crowd targets in 362 categories. All three arms preserve the complete 1,500,000-candidate pool and identical per-query support budgets.
+
+| Original AP | Confidence AP | Point AP | Point minus confidence | Point minus original |
+| ---: | ---: | ---: | ---: | ---: |
+| 52.65319320242774 | 52.718407813725854 | 53.18352693701037 | +0.46511912 | +0.53033373 |
+
+Counting points displaced 322 originally correct top-five candidate IDs, lost 260 originally matched targets and recovered 500. The original matched-target count was 44,485, and the final count was 44,725. The full paired report SHA-256 is `6b32aa1031cd0ca3f46f5670e31d92ddab0d3d8d99fabdb2e8ee71b0fbb05534`. All 12 original stock metrics agree with the archived raw receipt. The archived raw receipt contains aggregate metrics and sealed native-prediction provenance. The completed paired report supplies the current per-class AP and top-five diagnostics.
+
 ## Scope of counting comparisons
 
 The current general-benchmark image panels have already been examined in earlier experiments. Input seals record zero image-ID and image-SHA overlap relative to a separate development panel. Training-image membership for the released Count Anything/CLOC checkpoint remains unverified because a weight-linked training image manifest is unavailable in the audited source. The counter runtime fingerprint establishes source and checkpoint identity. Fixed-cohort counting comparisons are reported with this provenance boundary.
@@ -179,7 +189,7 @@ A complete native GeCo2 run used all 1,190 FSCD147 test images, released FSCD we
 
 ## Pending and deferred work
 
-- All five COCO detector counting controls and native D-FINE Objects365 controls are complete. Native GTR Objects365 counter acquisition is running under its separately frozen cohort.
+- All five COCO detector counting controls and both native Objects365 controls are complete under their frozen full-panel scopes.
 - Full DINOv3 raw and matched COCO evaluations are complete, preserving the full 257,445-query scope and native candidate pool. Original AP remains slightly higher than point AP, and point AP exceeds matched confidence.
 - RF-DETR-2XL execution remains deferred at the user's request pending the applicable license.
 - Group DETR's released COCO checkpoint is fully reproduced. Availability of its exact native Objects365 head remains unresolved.

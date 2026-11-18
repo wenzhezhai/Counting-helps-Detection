@@ -32,7 +32,7 @@ Both detectors use the same frozen first 5,000 images of the original validation
 | GTR-X native Objects365 head | **52.65** | 66.11 | 57.55 | Complete |
 | D-FINE-X native Objects365 head | **46.57** | 58.53 | 50.83 | Fresh full run complete |
 
-The fresh GTR, Group, TinyFormer and D-FINE COCO controls and native D-FINE Objects365 controls are complete below. Full DINO counting controls are complete after verified TinyFormer cache reuse. Native GTR Objects365 counter acquisition is running under the same frozen plan. The public pipeline checks complete counter coverage before scoring.
+Full matched controls are complete for all five COCO detectors and both native Objects365 detectors. Each detector-specific counter cohort was sealed before scoring. The public pipeline checks complete counter coverage before generating the matched arms.
 
 [Machine-readable results](results/summary_2026-11-18.json) · [Full experiment scope and evidence](docs/results.md) · [model access and status](docs/model_access.md) · [Group DETR v2 setup](docs/group_detr_v2.md) · [DINOv3 setup](docs/dinov3.md)
 
@@ -48,13 +48,14 @@ All COCO rows use the complete 5,000 validation images and 80 original categorie
 | TinyFormer-XL-PBM | 62.4842 | 62.5049 | **62.5684** | +0.0635 | +0.0843 |
 | D-FINE-X | 59.3090 | 59.4506 | **59.6730** | +0.2225 | +0.3641 |
 
-The fresh native D-FINE Objects365 comparison uses the previously frozen 5,000-image panel and original 365-category evaluation scope.
+Both fresh native Objects365 comparisons use the previously frozen 5,000-image panel and original 365-category evaluation scope.
 
 | Detector and data | Original AP | Matched confidence AP | Counting-point AP | Points − confidence | Points − original |
 | --- | ---: | ---: | ---: | ---: | ---: |
+| GTR-X native Objects365 | 52.6532 | 52.7184 | **53.1835** | +0.4651 | +0.5303 |
 | D-FINE-X native Objects365 | 46.5741 | 46.8021 | **47.4097** | +0.6076 | +0.8355 |
 
-GTR and TinyFormer improve over both baselines. DINO and Group improve over matched confidence, with their original detector AP remaining higher. Both have positive net top-five target gains, while their full AP change is negative. Native D-FINE Objects365 improves over both baselines.
+GTR and TinyFormer improve over both baselines. DINO and Group improve over matched confidence, with their original detector AP remaining higher. Both have positive net top-five target gains, while their full AP change is negative. Both native Objects365 detectors improve over both baselines.
 
 | Detector | Originally correct top-five boxes | Correct boxes displaced | Original targets lost | Previously unmatched targets recovered | Net matched-target change |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -63,6 +64,7 @@ GTR and TinyFormer improve over both baselines. DINO and Group improve over matc
 | Group DETR v2 · COCO | 24,330 | 305 | 275 | 294 | +19 |
 | TinyFormer-XL-PBM · COCO | 24,007 | 252 | 222 | 277 | +55 |
 | D-FINE-X · COCO | 23,580 | 251 | 219 | 350 | +131 |
+| GTR-X · Objects365 fixed panel | 44,485 | 322 | 260 | 500 | +240 |
 | D-FINE-X · Objects365 fixed panel | 43,609 | 338 | 261 | 570 | +309 |
 
 Displacement follows candidate identity. Target loss and recovery follow one-to-one target matching. The reports retain both. A proposed source-trained residual correction will test whether the AP benefit and correct-box preservation can improve together.
