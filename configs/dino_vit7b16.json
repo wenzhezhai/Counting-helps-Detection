@@ -3,7 +3,7 @@
   "source_repository": "https://github.com/facebookresearch/dinov3",
   "source_revision": "6876159a11b4df116f30f667f8c9888617df0751",
   "source_fingerprint_sha256": "a91a7b80b83f30c16231633a8ad8d92e845dff61045e50dbf7d2be16be000ea6",
-  "source_license": "https://github.com/facebookresearch/dinov3/blob/6876159a11b4df116f30f667f8c9888617df0751/LICENSE",
+  "source_license": "https://github.com/facebookresearch/dinov3/blob/6876159a11b4df116f30f667f8c9888617df0751/LICENSE.md",
   "official_weight_access": "https://github.com/facebookresearch/dinov3#pretrained-heads---detector-trained-on-coco2017-dataset",
   "backbone": {
     "filename": "dinov3_vit7b16_pretrain_lvd1689m-a955f4ea.pth",
@@ -140,7 +140,9 @@
     "profile_max_allocated_bytes": 19843913216,
     "actual_normal_entry_exporter_sha256": "1b870ffe6b594235ff81338a4ee3e396efef83c399394b0198f3dca3b1759f69",
     "actual_normal_entry_native139_sha256": "394e89709ea23e4491ee9fc132f6813eedadcc23e3a58c26bf333a2282d97e65",
-    "verification_scope": "Original native1536 reference and normal public entry match all1500 predictions exactly on reference139; four predefined native1536 geometries pass. Memory budget and allocator are recorded resource settings, not mandatory model hyperparameters. Native2048 full reproduction is unverified here."
+    "verification_scope": "All1500 predictions and projection BF16 input match the unmodified-window baseline under the same mixed-precision runtime on image139. Four predefined1536 geometries pass. The paper inference dtype and initial image interpolation are unspecified. Resource budgets are configurable.",
+    "reference_precision_scope": "Unmodified window operations under the same recorded mixed-parameter BF16-autocast runtime",
+    "actual_normal_entry_materializer_sha256": "7df3b9a7312cc74c85004790f1e3f52fe5da849a5f24f4c4d80bca8515fb8010"
   },
   "inference": {
     "normalization_mean": [
@@ -157,12 +159,17 @@
     "long_edge_cap": null,
     "single_scale": true,
     "test_time_augmentation": false,
-    "batch_size": 1
+    "batch_size": 1,
+    "parameter_storage": "BF16 Linear/Conv parameters; native types for all other parameters and buffers",
+    "autocast": "CUDA BF16 over the complete forward",
+    "initial_image_interpolation": "PIL bilinear"
   },
   "validated_runtime": {
     "python": "3.12.14",
     "torch": "2.7.1+cu126",
     "torchvision": "0.22.1"
   },
-  "loader_status": "NORMAL_PUBLIC_NATIVE1536_ENTRY_VERIFIED_FULL_EVALUATION_RUNNING"
+  "loader_status": "NORMAL_PUBLIC_NATIVE1536_ENTRY_VERIFIED_FULL_EVALUATION_RUNNING",
+  "paper_execution_precision": "UNSPECIFIED in the released detector entry and paper Appendix D.9",
+  "paper_initial_image_interpolation": "UNSPECIFIED in the cited detector paper section"
 }

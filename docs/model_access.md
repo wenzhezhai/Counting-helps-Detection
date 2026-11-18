@@ -20,7 +20,7 @@ dinov3_vit7b16_pretrain_lvd1689m-a955f4ea.pth
 dinov3_vit7b16_coco_detr_head-b0235ff7.pth
 ```
 
-The head in the approval email uses `coco_detr_head`. Current source builds a `coco2017_detr_head` default name. Pass the actual approved files explicitly when integrating the detector. The model-zoo 65.6 AP setting uses shortest edge 2048, single scale. The official 1536-pixel setting reports 65.4 AP. The current full-benchmark target selects this setting after the widest native 2048 image exceeded available RTX 4090 memory, with the choice recorded before DINO AP was read. Check full file hashes and profile actual model memory before full inference.
+The head in the approval email uses `coco_detr_head`. Current source builds a `coco2017_detr_head` default name. Pass the actual approved files explicitly when integrating the detector. The model-zoo 65.6 AP setting uses shortest edge 2048, single scale. The official 1536-pixel setting reports 65.4 AP. The current full-benchmark target selects this setting after the widest native 2048 image exceeded available RTX 4090 memory, with the choice recorded before DINO AP was read. The current run records whole-model BF16 autocast, BF16 Linear/Conv parameter storage and PIL bilinear resizing. The paper leaves inference dtype and initial image interpolation unspecified. The parity proof compares window-storage policies within this same recorded mixed-precision runtime.
 
 ## Verified runtimes
 

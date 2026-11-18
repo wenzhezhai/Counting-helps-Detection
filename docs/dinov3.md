@@ -4,11 +4,13 @@ This entry uses the official DINOv3 backbone and COCO detection head. It exports
 
 The selected reproduction uses the official **1536-pixel short-edge** single-scale setting. The paper's full COCO validation reference for this setting is **65.4 AP**. The **2048-pixel** setting has a published reference of **65.6 AP**. Its largest geometry exceeded available device memory. The recorded fallback was selected from memory measurements before DINO AP evaluation.
 
+The paper specifies short-edge resizing and rounding to a patch multiple. Its detector evaluation precision and initial image interpolation are unspecified. This run uses explicit whole-model CUDA BF16 autocast, BF16 Linear/Conv parameter storage and PIL bilinear image resizing. The 1,500-output parity test compares the storage adapter against unmodified window operations under that same recorded runtime. [DINOv3, Appendix D.9](https://arxiv.org/html/2508.10104v1), [released detector entry](https://github.com/facebookresearch/dinov3/blob/6876159a11b4df116f30f667f8c9888617df0751/dinov3/hub/detectors.py#L23-L37)
+
 ## Source and weights
 
 - [Official repository](https://github.com/facebookresearch/dinov3), revision `6876159a11b4df116f30f667f8c9888617df0751`.
 - [Official pretrained detection heads and weight access](https://github.com/facebookresearch/dinov3#pretrained-heads---detector-trained-on-coco2017-dataset).
-- [DINOv3 License Agreement](https://github.com/facebookresearch/dinov3/blob/6876159a11b4df116f30f667f8c9888617df0751/LICENSE). Obtain the weights through the official access process.
+- [DINOv3 License Agreement](https://github.com/facebookresearch/dinov3/blob/6876159a11b4df116f30f667f8c9888617df0751/LICENSE.md). Obtain the weights through the official access process.
 - [Pinned native window operations](https://github.com/facebookresearch/dinov3/blob/6876159a11b4df116f30f667f8c9888617df0751/dinov3/eval/detection/models/windows.py) and [backbone/position joiner](https://github.com/facebookresearch/dinov3/blob/6876159a11b4df116f30f667f8c9888617df0751/dinov3/eval/detection/models/backbone.py).
 
 The executable source fingerprint and both complete weight checksums are recorded in `configs/dino_vit7b16.json`.
@@ -37,7 +39,7 @@ The tested profile used an otherwise idle GPU with a 22-GiB PyTorch allocation c
 
 - Native architecture and complete checkpoint coverage, with a strict map of 932 unique parameter/buffer objects and 988 persistent state keys.
 - Linear/Conv parameters are materialized in BF16 for the CUDA autocast path. Other parameters and buffers retain their native types, including FP32 normalization, LayerScale, position encoding, tokens, and embeddings. Forward inference uses CUDA BF16 autocast.
-- Aspect ratio is retained before rounding each resized dimension up to a multiple of 16. Images use PIL bilinear resize, native ImageNet normalization and the full aspect-ratio-dependent long edge.
+- Aspect ratio is retained before rounding each resized dimension up to a multiple of 16. Images use PIL bilinear resize, ImageNet normalization and the full aspect-ratio-dependent long edge.
 - The native head has 91 sparse COCO slots and returns 1,500 candidates. All 1,500 are archived. A separate eligible stream selects the 80 native COCO category IDs **after** native top-k and records all 11 unused slots separately. Original candidate indices remain attached. Finite boxes with nonpositive extent remain in the output and audit counts.
 - The native postprocessor receives both resized and original image sizes. Its original-pixel coordinates enter the canonical prediction stream directly.
 
@@ -76,4 +78,4 @@ Each `chunks/<12-digit-image-id>.json` stores the complete native records and th
 
 Evaluate `predictions.jsonl` only after its seal exists, using stock COCO evaluation with all 80 categories and `maxDets=100`. Prefix reports state their 500-image scope. The full validation report covers all 5,000 images and uses its matching paper reference. Counting-guidance experiments add a separately frozen point cache and matched controls.
 
-Strict metadata, source and scope checks have passed. At 1536 pixels, all 1,500 native predictions and the BF16 projection input matched exactly on the predefined reference image, and all four geometry probes completed. The full normal-entry run uses an immutable snapshot of the same materializer, storage helper, model, preprocessing, and export logic. The portable entry only replaces the private-receipt requirement with the published verified-policy check and records any resource override. The full normal-entry run has started. Its first image reproduced all 1,500 original native predictions byte-for-byte, with SHA-256 `394e89709ea23e4491ee9fc132f6813eedadcc23e3a58c26bf333a2282d97e65`. The complete benchmark result is pending.
+Strict metadata, source and scope checks have passed. At 1536 pixels, all 1,500 native predictions and the BF16 projection input matched exactly on the predefined reference image, and all four geometry probes completed. The full normal-entry run uses an immutable snapshot of the same numerical materializer functions, storage helper, model, preprocessing and export logic. The portable entry only replaces the private-receipt requirement with the published verified-policy check and records any resource override. The full normal-entry run has started. Its first image matched all 1,500 predictions from the unmodified-window, same-mixed-precision baseline byte-for-byte, with SHA-256 `394e89709ea23e4491ee9fc132f6813eedadcc23e3a58c26bf333a2282d97e65`. The complete benchmark result is pending.

@@ -3,7 +3,7 @@
 This adapter invokes the unmodified DINOv3 architecture by Meta Platforms, Inc.
 and affiliates. Upstream source and its DINOv3 license remain separate:
 https://github.com/facebookresearch/dinov3/tree/6876159a11b4df116f30f667f8c9888617df0751
-https://github.com/facebookresearch/dinov3/blob/6876159a11b4df116f30f667f8c9888617df0751/LICENSE
+https://github.com/facebookresearch/dinov3/blob/6876159a11b4df116f30f667f8c9888617df0751/LICENSE.md
 The tensor mapping and allocation code in this module is an independent adapter.
 """
 from collections import defaultdict
