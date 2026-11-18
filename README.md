@@ -32,7 +32,7 @@ Both detectors use the same frozen first 5,000 images of the original validation
 | GTR-X native Objects365 head | **52.65** | 66.11 | 57.55 | Complete |
 | D-FINE-X native Objects365 head | **46.57** | 58.53 | 50.83 | Fresh full run complete |
 
-The fresh GTR, Group, TinyFormer and D-FINE COCO controls and native D-FINE Objects365 controls are complete below. Full DINO counter acquisition is running after verified TinyFormer cache completion. Native GTR Objects365 follows in the same frozen plan. The public pipeline checks complete counter coverage before scoring.
+The fresh GTR, Group, TinyFormer and D-FINE COCO controls and native D-FINE Objects365 controls are complete below. Full DINO counting controls are complete after verified TinyFormer cache reuse. Native GTR Objects365 counter acquisition is running under the same frozen plan. The public pipeline checks complete counter coverage before scoring.
 
 [Machine-readable results](results/summary_2026-11-18.json) · [Full experiment scope and evidence](docs/results.md) · [model access and status](docs/model_access.md) · [Group DETR v2 setup](docs/group_detr_v2.md) · [DINOv3 setup](docs/dinov3.md)
 
@@ -42,6 +42,7 @@ All COCO rows use the complete 5,000 validation images and 80 original categorie
 
 | Detector | Original AP | Matched confidence AP | Counting-point AP | Points − confidence | Points − original |
 | --- | ---: | ---: | ---: | ---: | ---: |
+| DINOv3 + Plain-DETR | **65.3753** | 65.2938 | 65.3578 | +0.0640 | −0.0175 |
 | GTR-X | 59.3799 | 59.4140 | **59.6447** | +0.2307 | +0.2648 |
 | Group DETR v2 | **63.2999** | 63.1847 | 63.2427 | +0.0580 | −0.0572 |
 | TinyFormer-XL-PBM | 62.4842 | 62.5049 | **62.5684** | +0.0635 | +0.0843 |
@@ -53,10 +54,11 @@ The fresh native D-FINE Objects365 comparison uses the previously frozen 5,000-i
 | --- | ---: | ---: | ---: | ---: | ---: |
 | D-FINE-X native Objects365 | 46.5741 | 46.8021 | **47.4097** | +0.6076 | +0.8355 |
 
-GTR and TinyFormer improve over both baselines. Group improves over matched confidence, with original detector AP remaining higher. Its top-five matching gain and full AP change have different signs. Native D-FINE Objects365 improves over both baselines.
+GTR and TinyFormer improve over both baselines. DINO and Group improve over matched confidence, with their original detector AP remaining higher. Both have positive net top-five target gains, while their full AP change is negative. Native D-FINE Objects365 improves over both baselines.
 
 | Detector | Originally correct top-five boxes | Correct boxes displaced | Original targets lost | Previously unmatched targets recovered | Net matched-target change |
 | --- | ---: | ---: | ---: | ---: | ---: |
+| DINOv3 + Plain-DETR · COCO | 24,268 | 281 | 226 | 290 | +64 |
 | GTR-X · COCO | 23,631 | 276 | 239 | 369 | +130 |
 | Group DETR v2 · COCO | 24,330 | 305 | 275 | 294 | +19 |
 | TinyFormer-XL-PBM · COCO | 24,007 | 252 | 222 | 277 | +55 |
@@ -213,11 +215,11 @@ docs/          Protocol, actual results, model access and Group DETR setup
 
 ## References and upstream licenses
 
-- Siméoni et al., *DINOv3*, TMLR, May 2026. [Paper](https://arxiv.org/abs/2508.10104), [official code and approved-weight access](https://github.com/facebookresearch/dinov3).
+- Siméoni et al., *DINOv3*, TMLR, May 2026. [TMLR paper](https://openreview.net/forum?id=2NlGyqNjns), [preprint](https://arxiv.org/abs/2508.10104), [official code and approved-weight access](https://github.com/facebookresearch/dinov3).
 - Hsieh et al., *TinyFormer*, arXiv, 24 May 2026. [Paper](https://arxiv.org/abs/2605.25046), [official code](https://github.com/mmpmmpmmpjosh/TinyFormer).
 - Robinson et al., *RF-DETR*, ICLR, April 2026. [Paper](https://arxiv.org/abs/2511.09554), [official code](https://github.com/roboflow/rf-detr), [platform model license](https://github.com/roboflow/rf-detr_plus/blob/main/LICENSE).
 - Feng et al., *GTR*, arXiv, 22 September 2026. [Paper](https://arxiv.org/abs/2609.26590), [official code](https://github.com/Intellindust-AI-Lab/GTR).
-- Peng et al., *D-FINE*, ICLR, April 2025. [Paper](https://arxiv.org/abs/2410.13842), [official code](https://github.com/Peterande/D-FINE).
+- Peng et al., *D-FINE*, ICLR, April 2025. [ICLR paper](https://proceedings.iclr.cc/paper_files/paper/2025/hash/6cf58a87e3097e7d1f9be3e8693a93de-Abstract-Conference.html), [preprint](https://arxiv.org/abs/2410.13842), [official code](https://github.com/Peterande/D-FINE).
 - Chen et al., *Group DETR v2*, arXiv, November 2022. [Paper](https://arxiv.org/abs/2211.03594), [released Paddle implementation](https://github.com/PaddlePaddle/PaddleDetection/tree/release/2.9/configs/group_detr).
 - Lei et al., *Count Anything*, arXiv, May 2026. [Paper](https://arxiv.org/abs/2605.30846), [official source](https://github.com/Mengqi-Lei/count-anything), [released weights](https://huggingface.co/MengqiLei/count-anything).
 - ECDet / EdgeCrafter provides an additional recent-detector implementation check. [Official code](https://github.com/Intellindust-AI-Lab/EdgeCrafter), [paper](https://arxiv.org/abs/2603.18739).

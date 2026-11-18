@@ -41,14 +41,15 @@ The predeclared 1536 setting followed a physical-memory failure on the widest 20
 | Ignored native slots | `faeb27ab2a902ac05560db395eb6fd12370c747ad27abd7914478c5733508644` |
 | Complete required counter-query set | `611d35bc9d26eb147b6874a3e999835d12a4d8fe2b4bf4de0c1c7e8bb90b5f34` |
 
-Full DINO counting controls require 257,445 image/category queries. At preflight, sealed caches supplied 181,494 and 75,951 remained. The completed TinyFormer new-query journal contributes another 18,841 reusable queries. The actual full DINO preflight verifies 200,335 cached predictions and 57,110 new queries across 4,916 images. Acquisition is running before scoring the counting arms.
+Full DINO counting controls require 257,445 image/category queries. At preflight, sealed caches supplied 181,494 and 75,951 remained. The completed TinyFormer new-query journal contributes another 18,841 reusable queries. The actual full DINO preflight verifies 200,335 cached predictions and 57,110 new queries across 4,916 images. The complete counter predictions and three scoring arms are now sealed and fully evaluated.
 
 ## Current matched counting controls
 
-Completed on 18 November 2026. Each complete detector-specific counter cohort is sealed before generating the three scoring arms and reading evaluation annotations. GTR and Group share the complete 181,891-query union. Fresh D-FINE uses 158,641 required queries, while TinyFormer uses its full 216,339-query cohort. Confidence and points support identical budgets on identical candidates.
+Completed on 18 November 2026. Each complete detector-specific counter cohort is sealed before generating the three scoring arms and reading evaluation annotations. GTR and Group share the complete 181,891-query union. Fresh D-FINE uses 158,641 required queries, TinyFormer uses its full 216,339-query cohort, and DINO uses all 257,445 required queries. Confidence and points support identical budgets on identical candidates.
 
 | Detector | Original AP | Confidence AP | Point AP | Point minus confidence | Point minus original |
 | --- | ---: | ---: | ---: | ---: | ---: |
+| DINOv3 + Plain-DETR | 65.37532620011595 | 65.29376559103865 | 65.35777800352513 | +0.06401241 | −0.01754820 |
 | GTR-X | 59.37986094198712 | 59.41395727747628 | 59.644652270173424 | +0.23069499 | +0.26479133 |
 | Group DETR v2 | 63.29988324954671 | 63.18468808422115 | 63.242682150569394 | +0.05799407 | −0.05720110 |
 | TinyFormer-XL-PBM | 62.484175107589415 | 62.50493864708171 | 62.56842832746897 | +0.06348968 | +0.08425322 |
@@ -56,12 +57,13 @@ Completed on 18 November 2026. Each complete detector-specific counter cohort is
 
 | Point arm | Correct candidate IDs displaced | Original matched targets lost | New targets recovered | Final top-five matched targets |
 | --- | ---: | ---: | ---: | ---: |
+| DINOv3 + Plain-DETR | 281 | 226 | 290 | 24,332 |
 | GTR-X | 276 | 239 | 369 | 23,761 |
 | Group DETR v2 | 305 | 275 | 294 | 24,349 |
 | TinyFormer-XL-PBM | 252 | 222 | 277 | 24,062 |
 | Fresh D-FINE-X | 251 | 219 | 350 | 23,711 |
 
-The original top-five matching denominators are 23,631 for GTR, 24,330 for Group, 23,580 for fresh D-FINE and 24,007 for TinyFormer. Matched confidence preserves those top-five identities. GTR improves over original AP and confidence. Group's original AP remains higher than its point arm, while the point arm exceeds confidence. The positive net Group target recovery is measured at IoU 0.50 in the per-image, per-class top five. Full AP integrates IoU thresholds 0.50–0.95 with maxDets 100.
+The original top-five matching denominators are 24,268 for DINO, 23,631 for GTR, 24,330 for Group, 23,580 for fresh D-FINE and 24,007 for TinyFormer. Matched confidence preserves those top-five identities. GTR improves over original AP and confidence. DINO and Group have original AP above their point arms, while points exceed matched confidence. The positive net Group target recovery is measured at IoU 0.50 in the per-image, per-class top five. Full AP integrates IoU thresholds 0.50–0.95 with maxDets 100.
 
 | Completed artifact | SHA-256 |
 | --- | --- |
@@ -74,6 +76,22 @@ The original top-five matching denominators are 23,631 for GTR, 24,330 for Group
 | Completed paired suite | `5f1fd451d6fc51e5c29ada4bc997e5663a25627a474d8def740fb19d9a6554fb` |
 
 All 45,789 new counter queries were acquired and durably saved. A CPU-only recovery reused the complete query cache with zero new predictions and sealed the final stream after an interrupted slow file merge. The preserved source journal has SHA-256 `ed01938c3af7fe7483f3b71c852e94696f924008d38635e08acd8e752cba5c24`. Recovery changed the output-writing stage while preserving acquired predictions.
+
+## Full DINO counting controls
+
+The complete comparison uses all 5,000 COCO images, 80 categories and 7,498,300 eligible native candidates in each arm. Original AP is **65.37532620011595**, matched-confidence AP **65.29376559103865** and point AP **65.35777800352513**. Points gain **0.06401241** over confidence, with AP **0.01754820 below the original detector**.
+
+The original top-five matching count is 24,268. Point rescoring displaces 281 correct candidate IDs, loses 226 original target matches and gains 290 new targets, ending at 24,332 matches. The positive net target change is measured at IoU 0.50 in the per-image, per-class top five. DINO's AP50 rises relative to its original scores, while AP75 declines. Full AP averages several overlap requirements. These observations describe the existing score arms and support checking AP alongside retention.
+
+| Full DINO artifact | SHA-256 |
+| --- | --- |
+| Paired AP and retention report | `e0d79687175a7f65cdd0185687932795f219f18f7e0145b525eea93683236ed2` |
+| Complete counter predictions | `2f6dc46866cbea1a20c493564b99e69889e131bf6fb404569bfb9f130b0e0388` |
+| Newly acquired predictions | `b7dc3cea65ba2f667b6d784c277a5cd9018cfa00df4307c988cf9d9837bb9663` |
+| Counter completion seal | `4b6b4b569f22d0e735acf462c7e3d918d030839bb3939cb550edb23d476aa9ec` |
+| Scoring-arm seal | `9b59fc1c73735cbd9e097be6d2ff885cb9d0b5153730883231456ac0d01923a1` |
+
+The original scoring-arm file is byte-identical to the sealed raw eligible stream. Its complete AP metrics, per-category AP and original top-five counts match the original raw evaluation exactly. All three complete stock-AP workers ran in separate processes, peaking at approximately 15.30 GiB RSS each. Candidate counts and geometry stayed fixed, including finite nonpositive-extent boxes.
 
 ## Fresh TinyFormer counting controls
 
@@ -161,8 +179,8 @@ A complete native GeCo2 run used all 1,190 FSCD147 test images, released FSCD we
 
 ## Pending and deferred work
 
-- GTR, Group, TinyFormer and fresh D-FINE COCO matched controls and native D-FINE Objects365 controls are complete. Full DINO counter acquisition is running. Native GTR Objects365 follows its separately frozen cohort.
-- Full DINOv3 raw COCO reproduction is complete. Full counting acquisition is running with verified TinyFormer cache reuse, preserving the full 257,445-query scope and native candidate pool. Native GTR Objects365 acquisition follows DINO.
+- All five COCO detector counting controls and native D-FINE Objects365 controls are complete. Native GTR Objects365 counter acquisition is running under its separately frozen cohort.
+- Full DINOv3 raw and matched COCO evaluations are complete, preserving the full 257,445-query scope and native candidate pool. Original AP remains slightly higher than point AP, and point AP exceeds matched confidence.
 - RF-DETR-2XL execution remains deferred at the user's request pending the applicable license.
 - Group DETR's released COCO checkpoint is fully reproduced. Availability of its exact native Objects365 head remains unresolved.
 - BMD-45 detector training stopped safely after 35 completed epochs at a user priority change. The resumable state remains archived. Counter adaptation and fresh-holdout evaluation remain pending.

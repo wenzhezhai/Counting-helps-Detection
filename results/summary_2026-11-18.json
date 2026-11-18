@@ -1,5 +1,5 @@
 {
-  "recorded_utc": "2026-11-18T06:50:26.229376+00:00",
+  "recorded_utc": "2026-11-18T08:38:32.276464+00:00",
   "reporting_cutoff_utc": "2026-11-18T10:00:00+00:00",
   "scope": {
     "COCO": "complete val2017,5000 images,80 categories",
@@ -24,7 +24,19 @@
       },
       "released_reference_AP": 65.4,
       "counting_controls": {
-        "status": "counter_acquisition_running"
+        "status": "complete",
+        "raw_ap": 65.37532620011595,
+        "confidence_ap": 65.29376559103865,
+        "points_ap": 65.35777800352513,
+        "displaced": 281,
+        "lost": 226,
+        "recovered": 290,
+        "baseline_correct": 24268,
+        "final_matched": 24332,
+        "result_sha256": "e0d79687175a7f65cdd0185687932795f219f18f7e0145b525eea93683236ed2",
+        "AP_gain_vs_confidence": 0.06401241248647693,
+        "AP_gain_vs_original": -0.017548196590823295,
+        "final_matched_targets": 24332
       }
     },
     {
@@ -130,7 +142,7 @@
         "result_sha256": "490bd52378cef258409bcb68ec5e0ae5fdfff9e3d4d0f02cae61dbd7d6938f09"
       },
       "counting_controls": {
-        "status": "queued"
+        "status": "counter_acquisition_running"
       }
     },
     {
@@ -168,6 +180,10 @@
     "finite_nonpositive_eligible_boxes_retained": 6039,
     "full_required_counter_queries": 257445,
     "cached_counter_queries_at_preflight": 200335,
-    "missing_counter_queries_at_preflight": 57110
+    "missing_counter_queries_at_preflight": 57110,
+    "counter_predictions_sha256": "2f6dc46866cbea1a20c493564b99e69889e131bf6fb404569bfb9f130b0e0388",
+    "counter_seal_sha256": "4b6b4b569f22d0e735acf462c7e3d918d030839bb3939cb550edb23d476aa9ec",
+    "paired_report_sha256": "e0d79687175a7f65cdd0185687932795f219f18f7e0145b525eea93683236ed2",
+    "paired_stock_ap_worker_peak_rss_kib": 16039088
   }
 }
